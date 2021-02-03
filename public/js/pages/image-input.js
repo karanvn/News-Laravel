@@ -1,0 +1,1 @@
+"use strict";var KTImageInputDemo={init:function(){new KTImageInput("kt_image"),new KTImageInput("kt_banner")}};KTUtil.ready(function(){KTImageInputDemo.init()});
