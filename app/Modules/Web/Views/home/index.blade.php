@@ -27,11 +27,11 @@
 	   $Pricing = @$generals['PRICING'];
    @endphp
 <h1 style="display:none">Ctrl Media</h1>
-<section class="text-rotator">
+<section class="text-rotator" id="slide_home" style="height:700px">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-12">
-		<div id="paralax-slider" class="owl-carousel">
+		<div id="paralax-slider" class="owl-carousel" style="display: none">
 			@if(count($slides)>0)
 			@foreach ($slides as $slide)
 			@if(empty($imgSlide))

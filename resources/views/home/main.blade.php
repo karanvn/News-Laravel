@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <title>@yield('title')</title>
     @yield('style')
     <base href="{{asset('')}}">
@@ -21,13 +22,13 @@
 </head>
 <body id="page-top" data-spy="scroll" data-target="#fixed-collapse-navbar" data-offset="120">
 
-    <div class="loader">
+    {{-- <div class="loader">
     <div class="spinner">
       <div class="bounce1"></div>
       <div class="bounce2"></div>
       <div class="bounce3"></div>
     </div>
-    </div>
+    </div> --}}
     
     
     
@@ -94,6 +95,8 @@
     @yield('content')
     
     @include('home.footer')
+    @yield('script')
+
 </body>
 </html>
 

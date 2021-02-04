@@ -63,10 +63,10 @@
                 @endphp
                 <article class="blog-item-v3">
                             <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}">
-                                <img style src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail" class="img-responsive"> 
+                                <img style src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail" class="img-responsive" style="width:100%"> 
                             </a>
                             <div class="blog-content" style="margin-top:20px">
-                                    <h3>{{ @$blog->user->name }} </h3>
+                                    <h3>{{ @$blog->title }} </h3>
                                     <ul class="blog-author">
                                         <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
                                         <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
@@ -79,8 +79,40 @@
                         </div>
                 </article>
                 @endforeach
+
+    @if (count($blogs) >= $limit)
+        <div class="row col-12">
+            <div class="col-md-4 mx-auto">
+                <nav class="navigation pagination">
+                    <div class="lynessa-MyAccount-content" style="width: 100%">
+                        <div class="text-center">
+                            <fieldset></fieldset>
+                            <form method="post">
+                                <input type="hidden" name="limit" id="limit" value="{{$limit}}">
+                                <input type="hidden" id="currentPage" value="{{$blogs->currentPage()}}">
+                                <input type="hidden" id="lastPage" value="{{$blogs->lastPage()}}">
+                                <div class="btn-cont">
+                                    <a class="btn" id="loadMore" style="display: block;">
+                                        Xem thêm
+                                        <span class="line-1"></span>
+                                        <span class="line-2"></span>
+                                        <span class="line-3"></span>
+                                        <span class="line-4"></span>
+                                    </a>
+                                </div>
+                                <div class="animationloadpage" style="display: none;">
+                                    <div class="img"><img src="css/load.gif" alt=""></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
-        @if (count($blogs) >= $limit)
+      
+        @endif 
+        </div>
+        {{-- @if (count($blogs) >= $limit)
         <div class="row">
             <div class="col-md-4 mx-auto">
                 <nav class="navigation pagination">
@@ -104,15 +136,13 @@
                                     <div class="img"><img src="css/load.gif" alt=""></div>
                                 </div>
                             </form>
-                            {{-- <p class="lynessa-result-count show-category-blogs">hiển thị</p> --}}
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
-        {{-- @else
-        <div class="">Dữ liệu đang trống</div> --}}
-        @endif
+      
+        @endif --}}
 
     <aside class="col-md-4 col-sm-4">
         <div class="widget search_box"> 
@@ -164,8 +194,6 @@
         var limit       = $("#limit").val();
         
         $('#loadMore').on('click', function() {
-            $('.animationloadpage').show();
-            //currentPage = parseInt($('#currentPage').val())+1;
             if(nextPage<=lastPage)
             {
                 $.ajax({
@@ -174,14 +202,9 @@
                 dataType:"text",
                 success : function (result){
                     var blog = $(result).find('#blog-pagination').html();
-                    var count_per_page = (blog.match(/post-item/g) || []).length;
-                    if(count_per_page < Number(limit)){
-                        $('#loadMore').hide();
-                    }
                     $('#blog-pagination').append(blog);
                     $('#currentPage').val(nextPage);
                     nextPage++;
-                    $('.animationloadpage').hide();
                 }
                 });
             }
