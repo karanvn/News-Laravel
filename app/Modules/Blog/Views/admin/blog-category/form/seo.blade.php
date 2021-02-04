@@ -107,46 +107,4 @@
         </div>
     </div>
 
-    {{-- banner --}}
-    <div class="col-lg-12">
-        <!--begin::List Widget 10-->
-        <div class="card card-custom card-stretchs gutter-b">
-
-            <!--begin::Header-->
-            <div class="card-header border-0">
-                <h3 class="card-title font-weight-bolder text-dark">Banner blog</h3>
-                <div class="card-toolbar">
-                    @php
-                        $banners = !empty(@$category) ?  @$category->banners()->where('type', 'CATEGORYBLOG')->orderBy('id', 'desc')->get() : [];
-                    @endphp
-                    <select class="form-control custom-select form-control-solid" id="change_categoryblog_banner" name="is_banner">
-                        @foreach(get_category_banners() as $key => $value)
-                        <option value="{{ $key }}" >{{ $value }}</option>
-                        @endforeach
-                        @if(count($banners) > 0)
-                        @foreach($banners as $banner)
-                        <option value="{{ $banner->id }}" >{{ Str::limit($banner->name, 80, '...')}}</option>
-                        @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-            <!--end::Header-->
-            <div class="separator separator-solid"></div>
-            <!--begin::Body-->
-            <div class="card-body pt-5">
-                <div class="col-lg-12" id="load_banner_form">
-                    <div class="load_banner_info"></div>
-                </div>
-            </div>
-            <!--end::Body-->
-            @if($errors->has('banner'))
-            <p class="text-danger"> {{$errors->first('banner')}}</p>
-        @endif
-        </div>
-       
-    </div>
-
-    {{-- end banner  --}}
-
 </div>

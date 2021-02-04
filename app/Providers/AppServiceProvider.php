@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
-//use App\Modules\Setting\Models\Setting;
+use App\Modules\Setting\Models\Setting;
 use App\Modules\Blog\Models\BlogCategory;
 use Illuminate\Support\Facades\URL;
 
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*$setting  = new Setting; 
+        $setting  = new Setting; 
         $settings = @$setting->get_settings();
         $generals = [];
         if(count(@$settings) > 0){
@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share([
                         'generals'       => $generals, 
                         'blogCategories' => $blogCategories
-                    ]); */
+                    ]); 
     
     }
 }
