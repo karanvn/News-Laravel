@@ -83,7 +83,7 @@
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="display: none">
                                         <div class="btn-group-sm" role="group">
                                             <button id="btnGroupDrop1" type="button" class="btn btn-{{ $cate->status == 'A' ? 'success' : 'danger' }} font-weight-bold dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ get_category_statuses()[$cate->status] }}
+                                                //
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" >{{ $cate->status == 'A' ? trans('Product::category.statuses.D') : trans('Product::category.statuses.A') }}</a>
