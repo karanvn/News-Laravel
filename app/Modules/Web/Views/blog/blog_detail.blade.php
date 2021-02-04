@@ -1,6 +1,6 @@
 @extends('home.main')
 @section('title')
-  {{ $blog->title_short }}
+  {{ @$blog->title }}
 @endsection
 @section('head')
 

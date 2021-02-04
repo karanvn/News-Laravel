@@ -60,10 +60,12 @@ class HomeController extends SiteController
         if(count($page_static)>0){
             return $this->pageStatic($alias1);
         }
-    
-       
-
-
+        if(!empty($slug2)){
+            $blog  = $this->blog->get_blog_slug($slug2);
+            if(!empty($blog)){
+                return $this->getBlogSlug([$slug1, $slug2, $slug2]);
+            }
+        }
         switch ($slug1[0]) {
             case 'cron_slug_cate_product':
                 return $this->getSlugCateProduct();
