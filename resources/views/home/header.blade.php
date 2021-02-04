@@ -100,6 +100,28 @@
     transform: scale(1.0);
   }
 }
+.navbar-brand img{
+  height: 40px;
+}
+header{
+  display: none;
+}
+body {
+    margin: 0;
+}
+
+#slide_home{
+    height: 100vh;
+  }
+.innerpage-banner{
+    height:440px;
+   
+}
+@media only screen and (max-width: 768px) {
+  #slide_home{
+    height: 50vh;
+  }
+}
 
 </style>
 
