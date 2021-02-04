@@ -9,12 +9,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 use App\Libraries\Upload;
-use App\Modules\Product\Models\Category;
 use  App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Banner\Models\Banner;
 use WebPConvert\WebPConvert;
 use App\Modules\Log\Libraries\LibActivityLog;
-use App\Modules\Product\Models\Collection;
 
 
 
@@ -24,9 +22,7 @@ class AjaxController extends SiteController
     {
         $this->banner = new Banner();
         $this->log = new LibActivityLog();
-        $this->Category = new Category();
         $this->BlogCategory = new BlogCategory();
-        $this->collection = new Collection();
     }
     function processBanner(Request $request) {
         $inputs = $request->except(['_token']);
@@ -138,15 +134,11 @@ class AjaxController extends SiteController
     }
     function objectAddBanner($id=''){
         $datas = '';
-        if($id=='CATEGORY'){
-            $datas = $this->Category->get_categories(['status' =>'A']);
-        }
+       
         if($id=='CATEGORYBLOG'){
             $datas = $this->BlogCategory->get_categories(['status' =>'A']);
         }
-        if($id=='COLLECTION'){
-            $datas =  $this->collection->get_collections(['status' =>'A']);
-        }
+       
         return response()->json([
             'html' =>  view('Banner::banner.objectAddBanner',['datas' => $datas,'type' => $id])->render()
         ]);

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Blog\Models\Blog;
-use App\Modules\Product\Models\Category;
 use Illuminate\Support\Str;
 use App\Modules\Banner\Models\Banner;
 use App\Libraries\Upload;
@@ -22,13 +21,9 @@ class BlogCategoryController extends SiteController
         $this->blogCategory = new BlogCategory;
         $this->banner = new Banner();
         $this->blog = new Blog;
-        $this->category = new Category();
         $blogCategories = $this->blogCategory->get_categories();
         view()->share('blogCategories',$blogCategories);
-        $menuProduct = $this->category->get_categories([
-            'status' => 'A'
-        ]);
-        view()->share('menuProducts',$menuProduct);
+        
     }
     function list()
     {   
@@ -83,11 +78,7 @@ class BlogCategoryController extends SiteController
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        if(@$request->is_banner != 'NONE'){
-            if(empty($request->banner_name)){
-                return redirect()->back()->withErrors(['banner' => 'Hảy điền đủ thông tin của banner'])->withInput();
-            }
-        }
+      
         
         $slug = url_slug(isset($request->slug)?$request->slug:$request->title_short);
         if($request->hasFile('image'))
@@ -126,42 +117,7 @@ class BlogCategoryController extends SiteController
         $url_slug->save();
         // ===========================
         // banner
-        if(@$request->is_banner != 'NONE'){
-            $upload = new Upload();
-           if(@$request->is_banner == 'ADD'){
-            $banner = $this->banner;
-           }else{
-            $banner = Banner::find(@$request->is_banner);
-           }
-           $banner->name = @$request->banner_name;
-           $banner->published_start = @$request->banner_published_start;
-           $dateNow = date('Y-m-d H:i:s');
-           $dateNow = substr($dateNow,0, 14);
-           $dateInputB =  substr($request->banner_published_end,0, 14);
-           if($dateNow == $dateInputB){
-            $banner->published_end = date('Y-m-d H:i:s',strtotime("06/10/2030 19:00:02"));
-           }else{
-           $banner->published_end = @$request->banner_published_end;
-           }
-           $banner->extension = @$request->banner_extension;
-           $banner->link_youtube = @$request->link_youtube;
-            $banner->link = @$request->banner_link;
-            $banner->description = @$request->banner_description;
-            $banner->titlebutton = @$request->titlebutton; 
-            $banner->status = @$request->banner_status; 
-            $banner->user_id = Auth::id(); 
-            $banner->type = 'CATEGORYBLOG';
-            $banner->save();
-
-            $hasFile = $request->hasFile('banner_avatar') ? true : false;
-            // dd($hasFile);
-            if($hasFile){
-                $file = $request->banner_avatar;
-                $image_path = get_banner_path_image();
-                $banner->avatar = $upload->doUpload($image_path, $file, md5($banner->id), []);
-                $banner->save();
-            }
-        }
+      
         // end banner
         //dd($request->all());
         return redirect()->route('blog-category-list')->with(['message'=>'Thêm thành công']);
@@ -235,43 +191,7 @@ class BlogCategoryController extends SiteController
         // check banner
       
       
-        if($request->is_banner != 'NONE'){
-            $upload = new Upload();
-           if(@$request->is_banner == 'ADD'){
-            $banner = $this->banner;
-           }else{
-            $banner = Banner::find($request->is_banner);
-           }
-           $banner->name = @$request->banner_name;
-           $banner->published_start = @$request->banner_published_start;
-           $dateNow = date('Y-m-d H:i:s');
-           $dateNow = substr($dateNow,0, 14);
-           $dateInputB =  substr($request->banner_published_end,0, 14);
-           if($dateNow == $dateInputB){
-            $banner->published_end = date('Y-m-d H:i:s',strtotime("06/10/2030 19:00:02"));
-           }else{
-           $banner->published_end = @$request->banner_published_end;
-           }
-           $banner->extension = @$request->banner_extension;
-           $banner->link_youtube = @$request->link_youtube;
-            $banner->link = @$request->banner_link;
-            $banner->titlebutton = @$request->titlebutton; 
-            $banner->description = @$request->banner_description;
-            $banner->status = @$request->banner_status; 
-            $banner->user_id = Auth::id(); 
-            $banner->type = 'CATEGORYBLOG';
-            $banner->object_id = $blogCategory; 
-            $banner->save();
-
-            $hasFile = $request->hasFile('banner_avatar') ? true : false;
-            // dd($hasFile);
-            if($hasFile){
-                $file = $request->banner_avatar;
-                $image_path = get_banner_path_image();
-                $banner->avatar = $upload->doUpload($image_path, $file, md5($banner->id), []);
-                $banner->save();
-            }
-        }
+     
 
 
 

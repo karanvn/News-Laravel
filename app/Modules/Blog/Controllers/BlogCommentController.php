@@ -5,7 +5,6 @@ namespace App\Modules\Blog\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\Blog\Models\Blog;
 use App\Modules\Blog\Models\BlogComment;
-use App\Modules\Product\Models\Category;
 use App\Modules\Blog\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,13 +17,8 @@ class BlogCommentController extends Controller
         $this->blog = new Blog;
         $this->comment = new BlogComment;
         $this->blogCategory = new BlogCategory;
-        $this->category = new Category();
         $blogCategories = $this->blogCategory->get_categories();
         view()->share('blogCategories',$blogCategories);
-        $menuProduct = $this->category->get_categories([
-            'status' => 'A'
-        ]);
-        view()->share('menuProducts',$menuProduct);
     }
     function list($blog_id)
     {
