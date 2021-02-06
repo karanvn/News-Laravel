@@ -46,9 +46,9 @@
           <div class="row">
           <div class="col-md-12">
           <ul class="top-right text-right">
-                <li><a href="{{@$generals['SOCIAL']['facebook']}}" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="{{@$generals['SOCIAL']['twitter']}}" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="{{@$generals['SOCIAL']['instagram']}}" class="instagram"><i class="icon-instagram"></i></a></li>
+                <li style="display:list-item"><a href="{{@$generals['SOCIAL']['facebook']}}" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                <li style="display:list-item"><a href="{{@$generals['SOCIAL']['twitter']}}" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li style="display:list-item"><a href="{{@$generals['SOCIAL']['instagram']}}" class="instagram"><i class="icon-instagram"></i></a></li>
               </ul>
               
             <nav class="navbar navbar-default">
