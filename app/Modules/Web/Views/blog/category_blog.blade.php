@@ -50,6 +50,38 @@
       </div>
     </div>
   </section>
+<style>
+  .banner_service img, .banner_service iframe{
+    width:100%;
+    height: 500px;
+}
+</style>
+
+@if(count($slideCategorys)>0)
+<div class="banner_service">
+@php
+    $slidei = 1;
+@endphp
+@foreach ($slideCategorys->where('extension','youtube') as $item)
+    {!!@$item->link_youtube !!}
+    @php
+    $slidei++;
+    break;
+@endphp
+@endforeach
+
+@if($slidei==1)
+@foreach ($slideCategorys as $item)
+    <img src="{{get_image_banner_webp(@$item->avatar)}}" alt="">
+@php
+break;
+@endphp
+@endforeach
+@endif
+</div>
+
+@endif
+
             <div class="blog-list-grid row auto-clear equal-container better-height " id="blog-pagination">
                 <section id="area-main" class="padding">
                     <h5 class="hidden">hidden</h5>
@@ -70,7 +102,7 @@
                                     <ul class="blog-author">
                                         <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
                                         <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
-                                        <li><a href="#."><i class="fa fa-clock-o"></i>{{ date_format($blog->created_at,'d-m-Y') }}</a></li>
+                                        <li><a href="#."><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}}</a></li>
                                 
                                 <p>
                                     {!!@$blog->description !!}
@@ -155,7 +187,7 @@
         <div class="widget"> 
           <h4>Danh mục</h4>
           <ul class="category">
-              @foreach($blogCategories->where('position','BLOG') as $category)
+              @foreach($blogCategories->where('position','BLOG')->where('parent_id','0') as $category)
             <li><a href="{{ route('optimize_slug',['alias1'=>$category->slug.'.html']) }}">{{@$category->title}}</a></li>
             @endforeach
           </ul>

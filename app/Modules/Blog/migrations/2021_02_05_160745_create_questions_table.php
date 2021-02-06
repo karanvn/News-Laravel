@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddShowHomeToBlogCategoryTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddShowHomeToBlogCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('blog_category', function (Blueprint $table) {
-            $table->string('showHome')->nullable();
+        Schema::create('questions', function (Blueprint $table) {
+            $table->id();
+            $table->integer('category_id');
+            $table->text('questions');
+            $table->text('reply')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddShowHomeToBlogCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('blog_category', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('questions');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Blog\Models\Blog;
+use App\Modules\Blog\Models\Questions;
 use Illuminate\Support\Str;
 use App\Modules\Banner\Models\Banner;
 use App\Libraries\Upload;
@@ -21,6 +22,7 @@ class BlogCategoryController extends SiteController
         $this->blogCategory = new BlogCategory;
         $this->banner = new Banner();
         $this->blog = new Blog;
+        $this->questions = new Questions();
         $blogCategories = $this->blogCategory->get_categories();
         view()->share('blogCategories',$blogCategories);
         
@@ -117,7 +119,6 @@ class BlogCategoryController extends SiteController
         $url_slug->save();
         // ===========================
         // banner
-      
         // end banner
         //dd($request->all());
         return redirect()->route('blog-category-list')->with(['message'=>'Thêm thành công']);
@@ -126,12 +127,14 @@ class BlogCategoryController extends SiteController
     {
         $category = $this->blogCategory->get_categories(['id'=>$id])->first();
         $categoriesparent = BlogCategory::where('parent_id','0')->get();
+        $questions = $this->questions->get_questions([
+            'category_id' => $id
+        ]);
         //dd($category);
-        return view('Blog::admin.blog-category.edit', compact('category','categoriesparent'));
+        return view('Blog::admin.blog-category.edit', compact('category','categoriesparent','questions'));
     }
     function postEdit(Request $request)
     {
-       
         $pattern = [
             'title'       => 'required|max:255',
             'title_short' => 'required|max:255',
@@ -177,8 +180,6 @@ class BlogCategoryController extends SiteController
         $image = $request->image;
         $data = array_merge($request->all(),['image'=>$image]);
         $blogCategory = $this->blogCategory->get_category($request->id)->edit_category($data);
-       
-        
         // Handle add & update slug for table slug
         SlugOptimize::where('slug', $request->slug)->where('object_id', $blogCategory)->delete();
         $url_slug = new SlugOptimize();
@@ -190,11 +191,19 @@ class BlogCategoryController extends SiteController
         
         // check banner
       
-      
-     
-
-
-
+    //    add question
+    if(!empty($request->questions_name)){
+        Questions::where('category_id',$request->id)->delete();
+        foreach($request->questions_name as $key => $questions){
+            if(!empty($questions)){
+                $new_que = new Questions();
+                $new_que->category_id = $request->id;
+                $new_que->questions = $questions;
+                $new_que->reply = @$request->questions_reply[$key];
+                $new_que->save();
+            }
+        }
+    }
 
         return redirect()->route('blog-category-list')->with(['message'=>'Sửa thành công']);
     }

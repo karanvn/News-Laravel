@@ -27,6 +27,7 @@ use App\Modules\Location\Models\District;
 use App\Modules\Location\Models\Ward;
 use App\Modules\Mail\Libraries\MailTemplate;
 use Illuminate\Support\Facades\Session;
+use App\Modules\Blog\Models\Questions;
 use App\User;
 
 class HomeController extends SiteController
@@ -46,6 +47,7 @@ class HomeController extends SiteController
         $this->blogComment     = new BlogComment();
         $this->feedback        = new Feedback();
         $this->pageStatic      = new PageStatic();
+        $this->questions = new Questions();
         $this->reciveMail      = new ReciveMail();
     }
 
@@ -339,10 +341,18 @@ class HomeController extends SiteController
             'type'      => 'CATEGORYBLOG',
             'published' => 'A',
             'object_id' => $categoryBlogs->id,
-            'extension' => 'image'
+            'Extence'  =>['image','youtube']
         ]);
         // dd($blogs);
         $nameCategory = $categoryBlogs->title_short;
+        if(@$categoryBlogs->position == 'SERVICE'){
+
+            $questions = $this->questions->get_questions([
+                'category_id' => $categoryBlogs->id
+            ]);
+
+        return view('Web::blog.category_blog_service', compact('questions','blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit'));
+        }
         return view('Web::blog.category_blog', compact('blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit'));
     }
 
