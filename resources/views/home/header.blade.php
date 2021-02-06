@@ -24,7 +24,7 @@
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     <link rel="dns-prefetch" href="//connect.facebook.net">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
+    {{-- <link rel='stylesheet' id='add-google-fonts-css' href='//fonts.googleapis.com/css?family=Encode+Sans%3A400%2C500%2C600%2C700%2C8...ay=swap' type='text/css' media='all' /> --}}
     <link href="/css/pages/fontrelaway.css" rel="preload" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('template/css/bootstrap.min.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('template/css/font-awesome.min.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
@@ -99,7 +99,7 @@
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
-}
+} --}}
 .navbar-brand img{
   height: 40px;
 }
@@ -121,8 +121,31 @@ body {
   #slide_home{
     height: 50vh;
   }
+  
+}
+#fixed-collapse-navbar li .clidLi{
+  display: none;
+    position: absolute;
+    background: #eef;
+    width: max-content;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    border-radius:4px;
+}
+#fixed-collapse-navbar li .clidLi ul li{
+  padding:5px;
+}
+#fixed-collapse-navbar li .clidLi ul li:nth-child(1){
+  font-weight: bold;
+}
+#fixed-collapse-navbar li:hover .clidLi{
+ display: block;
 }
 
+#fixed-collapse-navbar li .clidLi ul{
+  display: inline-table;
+  padding:15px;
+}
 </style>
 
 

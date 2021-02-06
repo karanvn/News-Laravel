@@ -466,7 +466,7 @@
 	 @endphp
 		 <div class="item"> 
 			<div class="image"><a href="{{ route('optimize_slug', ['alias1' => @$slug1, 'alias2'=> @$slug2, 'alias3' => @$slug3]) }}"><img data-src="{{get_image_blog_webp(@$blogFooter->image)}}" class="lazyload" alt="publication Image"></a></div>
-			  <h5>{{ date_format(@$blogFooter->created_at,'d-m-Y') }}</h5>
+			  <h5>{{ !empty($blogFooter->created_at) ? date_format($blogFooter->created_at,'d-m-Y') : ''}}</h5>
 			  <h4>{{@$blogFooter->title}}</h4>
 			  <p>by <a href="#." class="name">Admin </a></p>
 			  <p>{!! @$blogFooter->description !!}</p>

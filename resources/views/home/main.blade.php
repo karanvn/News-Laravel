@@ -12,7 +12,13 @@
     @yield('meta')
     @include('home.header')
     @yield('head')
-   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116660152-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-116660152-1');
+    </script>
     {{-- Chèn link code --}}
     @php
         if(@$generals['LINK_CODE']['status_1'] == 1 && @$generals['LINK_CODE']['position_1'] == 'header'){
@@ -31,7 +37,7 @@
     </div> --}}
     
     
-    
+
     
     <!-- Main-Navigation -->
      <header id="main-navigation">
@@ -52,7 +58,6 @@
                 </button>
                <a class="navbar-brand"><img src="/Logo/logo.png" alt="logo" class="img-responsive"></a> 
              </div>
-            
               
             
                 <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right">
@@ -61,25 +66,52 @@
                        <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li class="active">
-                      <a href="/" class="page-scroll">Home</a>
+                      <a href="/" class="page-scroll">TRANG CHỦ</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">GIỚI THIỆU</a>
                     </li>
-                     <li>
-                        <a class="page-scroll" href="#thinkers">ĐỘI NGỦ</a>
-                    </li>
-                    <li>
-                      <a href="#project" class="page-scroll">THƯ VIỆN</a>
-                    </li>
-                    <li>
-                      <a href="#pricing" class="page-scroll">GIÁ</a>
-                    </li>
+                      @foreach ($blogCategories->where('id','34') as $blogCategorie)
+                            <li>
+                              <a class="page-scroll" href="{{@$blogCategorie->slug}}">{{@$blogCategorie->title}}</a>
+                              <div class="clidLi">
+                                  @foreach ($blogCategories->where('parent_id','34') as $blogCategori)
+                                     <ul>
+                                       <li>
+                                        <a class="page-scroll" href="{{@$blogCategori->slug}}">{{@$blogCategori->title}}</a>
+                                       </li>
+                                       @foreach ($blogCategories->where('parent_id',$blogCategori->id) as $blogCategor)
+                                         <li>
+                                          <a class="page-scroll" href="{{@$blogCategor->slug}}">{{@$blogCategor->title}}</a>
+                                         </li>
+                                    @endforeach
+                                     </ul>
+                                  @endforeach
+                              </div>
+                          </li> 
+                      @endforeach
+
+                      @foreach ($blogCategories->where('id','41') as $blogCategorie)
+                      <li>
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
+
+                      @foreach ($blogCategories->where('id','35') as $blogCategorie)
+                      <li>
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
+
+                      @foreach ($blogCategories->where('id','49') as $blogCategorie)
+                      <li>
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
                     
                     <li>
                       <a href="#publication" class="page-scroll">BLOG</a>
                     </li>
-                    
                     <li>
                       <a href="#contact" class="page-scroll">LIÊN HỆ</a>
                     </li>
