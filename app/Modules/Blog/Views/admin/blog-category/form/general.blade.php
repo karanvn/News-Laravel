@@ -1,6 +1,7 @@
 <link href="admin/assets/plugins/global/plugins.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
 <link href="admin/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
 <link href="admin/assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+<script src="/js/crud/ckeditor1/ckeditor.js"></script>
 <!--end::Global Theme Styles-->
 <!--begin::Layout Themes(used by all pages)-->
 <link href="admin/assets/css/themes/layout/header/base/dark.css?v=7.0.5" rel="stylesheet" type="text/css" />
@@ -130,7 +131,7 @@
     <div class="form-group row">
         <label
             class="col-form-label">{{trans('Blog::blogcategory.add.form.description') }}</label>
-        <input type="name" class="form-control" name="description" value="{{ @$category->description }}">
+        <textarea class="form-control ckeditor" name="description">{{ @$category->description }}</textarea>
         @if($errors->has('title_shdescriptionort'))
         <p class="text-danger"> {{$errors->first('description')}}</p>
         @endif
@@ -158,6 +159,9 @@
             </option>
             <option {{ @$category->position=='HOME'?'selected':'' }} value="HOME">
                 Trang chủ
+            </option>
+            <option {{ @$category->position=='SERVICE'?'selected':'' }} value="SERVICE">
+                Dịch vụ
             </option>
             <option {{ @$category->position=='NONE'?'selected':'' }} value="NONE">
                 {{trans('Blog::blogcategory.positions.NONE') }}

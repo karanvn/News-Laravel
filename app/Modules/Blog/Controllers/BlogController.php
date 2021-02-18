@@ -136,6 +136,7 @@ class BlogController extends SiteController
     function postEdit(Request $request)
     {
        
+       
         $id = !empty($request->id) ? $request->id : 0;
         $pattern = [
             'title'             => 'required|max:255',

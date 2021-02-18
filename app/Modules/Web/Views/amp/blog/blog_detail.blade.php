@@ -95,7 +95,6 @@ echo '</script>';
                             @endphp
                     </div>
                     <div class="post-footer">
-                        
                         <div class="categories">
                             <span>Categories: </span>
                             <a href="{{route('optimize_slug', ['alias1' => $blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}">{{ @$blog->category->title_short }}</a>

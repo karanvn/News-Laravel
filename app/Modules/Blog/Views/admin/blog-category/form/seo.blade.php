@@ -107,4 +107,59 @@
         </div>
     </div>
 
+    {{-- booj caau hoir thuowfng gawjp --}}
+    <div class="col-lg-12">
+        <!--begin::List Widget 10-->
+        <div class="card card-custom card-stretchs gutter-b">
+            <!--begin::Header-->
+            <div class="card-header border-0">
+                <h3 class="card-title font-weight-bolder text-dark">Bộ câu hỏi thường gặp</h3>
+                <div class="card-toolbar">
+                    <div class="accordion accordion-light accordion-light-borderless accordion-toggle-plus"
+                        id="accordion_seo">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="add_que"><b>Thêm câu hỏi</b> +</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Header-->
+            <div class="separator separator-solid"></div>
+            <!--begin::Body-->
+            <div class="card-body pt-5" id="contentque">
+              
+               @if(!empty($questions))
+                @foreach ($questions as $question)
+                <div class="form-group mb-2 bg-light row px-2 py-2 rounded">
+                    <label class="col-form-label">Câu hỏi</label>
+                    <input class="form-control form-control-lg" type="text" name="questions_name[]" placeholder="" value="{{@$question->questions}}">
+                    <label class="col-form-label">Trả lời</label>
+                    <input class="form-control form-control-lg" type="text" name="questions_reply[]" placeholder="" value="{{@$question->reply}}">
+                </div>
+                @endforeach
+
+               @endif
+
+                
+                
+
+            </div>
+            <!--end::Body-->
+        </div>
+    </div>
 </div>
+<div class="inputque d-none">
+    <div class="form-group mb-2 bg-light row px-2 py-2 rounded">
+        <label class="col-form-label">Câu hỏi</label>
+        <input class="form-control form-control-lg" type="text" name="questions_name[]" placeholder="" value="">
+        <label class="col-form-label">Trả lời</label>
+        <input class="form-control form-control-lg" type="text" name="questions_reply[]" placeholder="" value="">
+    </div>
+</div>
+<script>
+    $('.add_que').on('click', function(){
+        $('#contentque').append($('.inputque').html());
+    })
+</script>
