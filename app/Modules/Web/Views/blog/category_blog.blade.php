@@ -103,7 +103,6 @@ break;
                                         <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
                                         <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
                                         <li><a href="#."><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}}</a></li>
-                                
                                 <p>
                                     {!!@$blog->description !!}
                                 </p>

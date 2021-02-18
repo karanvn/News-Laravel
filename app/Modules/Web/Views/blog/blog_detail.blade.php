@@ -15,11 +15,16 @@
   #menu_ol_blog h3{
     padding:10px;
   }
-  #menu_ol_blog ol{
-    list-style: disc;
-  }
+ 
   #menu_ol_blog li{
     margin: 0 10px 10px 30px;
+  }
+  .listtoc ul{
+    list-style: decimal;
+    margin-top:10px;
+  }
+  .listtoc{
+   display: none;
   }
 
 </style>
@@ -47,13 +52,13 @@
                                         <li><a><i class="fa fa-user"></i>By Admin</a></li>
                                         <li><a><i class="fa fa-comment-o"></i>{{@$blog->comments->count()}} bình luận</a></li>
                                         <li><a><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format(@$blog->created_at,'d-m-Y') : ''}}</a></li>
+                                        <li><a href="{{route('optimize_slug', ['alias1' => @$blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}"><i class="fa fa-file-o" aria-hidden="true"></i> {{ @$blog->category->title_short }}</a></li>
                                       </ul>
+
                                       <div id="menu_ol_blog">
-                                        <h3>Nội dung bài viết</h3>
-                                        <ol data-toc="div.content_blog_del" data-toc-headings="h2,h3" class="listtoc" style="list-style: circle!important;"></ol>
+                                        <h3 onclick="shomenu()" style="cursor: pointer"><i class="fa fa-bars" aria-hidden="true"></i> Nội dung bài viết</h3>
+                                        <ul data-toc="div.content_blog_del" data-toc-headings="h2,h3" class="listtoc" style="list-style: decimal!important;"></ul>
                                       </div>
-                                
-                                        
                                                         <div class="content_blog_del">{!! @$blog->content !!}</div>
                         <div class="lynessa-share-socials">
                           <script src="https://sp.zalo.me/plugins/sdk.js"></script>
@@ -78,12 +83,7 @@
                           </div>
                           @endif
                     </div>
-                    <div class="post-tag clearfix"> 
-                        <ul class="tag-cloud pull-left">
-                          <li> <a href="{{route('optimize_slug', ['alias1' => @$blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}">{{ @$blog->category->title_short }}</a></li>
-                        </ul>
-                       
-                      </div>
+                 
 
                    
                
@@ -91,21 +91,22 @@
                
                 {{-- END:BLOG-REF --}}                    
                 <div id="comments" class="comments-area">
-                    <div id="respond" class="comment-respond row">
-                        <h3 id="reply-title" class="comment-reply-title" style="padding:15px">Bình luận của bạn</h3>
-                        <form class="comment-form form-inline" name="commentblog" id="commentblog">
+                    <div id="respond" class="comment-respond">
+                        <h3 id="reply-title" class="comment-reply-title">Bình luận của bạn</h3>
+                        <form class="comment-form form-inline row" name="commentblog" id="commentblog">
                             @csrf
                             <input type="hidden" name="blog_id" value="{{ $blog->id }}" class="text-left"/>
                           
-                            <p class="col-md-6 col-sm-12 form-group">
-                                <input name="name" id="name" class="form-control" placeholder="Nhập tên của bạn*" type="text" required>
+                            
+                            <p class="col-md-12 col-sm-12 form-group comment-form-comment"><textarea class="form-control" id="comment" name="comment" aria-required="true" placeholder="Bình luận..." style="height: 150px;max-height:150px"></textarea>
                             </p>
                             <p class="col-md-6 col-sm-12 form-group">
-                                <input name="email" id="email" class="form-control" placeholder="Nhập Email*" type="email" required>
-                            </p>
-                            <p class="col-md-12 col-sm-12 form-group comment-form-comment"><textarea class="form-control" id="comment" name="comment" cols="45" rows="6" aria-required="true" placeholder="Bình luận..."></textarea>
-                            </p>
-                            <p class="form-submit col-12"  style="padding:15px">
+                              <input name="name" id="name" class="form-control" placeholder="Nhập tên của bạn*" type="text" required style="display: none">
+                          </p>
+                          <p class="col-md-6 col-sm-12 form-group">
+                              <input name="email" id="email" class="form-control" placeholder="Nhập Email*" type="email" required style="display: none">
+                          </p>
+                            <p class="form-submit col-12"  style="padding:15px; margin-top:10px">
                                 <input name="submit" id="submit_comment_blog" class="col-12" value="Gửi bình luận" type="submit">
                             </p>
                             <div class="animationloadpage" style="display: none;">
@@ -157,67 +158,20 @@
                 </div>
             </div>
         </div>
-            {{-- <aside class="col-md-4 col-sm-4">
-              <div class="widget search_box">  --}}
-                {{-- <form>
-                  <input type="search" placeholder="Search">
-                  <i class="fa fa-search"></i>
-                </form>
-              </div>--}}
-             {{-- @if(count($blogsCare)>0)
-              <div class="widget"> 
-                <h4>Bài viết liên quan</h4>
-                <ul class="category">
-                    @foreach($blogsCare as $blogCare)
-                    @php
-                        $slug   = $blogCare->category;
-                        $slug_1 = @$slug->slug;
-                    @endphp
-                     @if(@$blogCare->category->position == 'BLOG')
-                  <li><a href="{{route('optimize_slug', ['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blogCare->slug])}}">{{@$blogCare->title}}<span class="date">{{ date_format(@$blogCare->created_at,'d-m-Y') }}</span></a></li>
-                  @endif
-                  @endforeach
-                </ul>
-              </div>
-              @endif
-              <div class="widget"> 
-                <h4>Danh mục</h4>
-                <ul class="category">
-                    @foreach($blogCategories->where('position','BLOG') as $category)
-                  <li><a href="{{ route('optimize_slug',['alias1'=>$category->slug.'.html']) }}">{{@$category->title}}</a></li>
-                  @endforeach
-                </ul>
-              </div> --}}
-              {{-- <div class="widget"> 
-                <h4>tags</h4>
-                <ul class="tag-cloud">
-                  <li><a href="#.">ANALYSIS</a></li>
-                  <li><a href="#.">BOARD</a></li>
-                  <li><a href="#.">CAREERS</a></li>
-                  <li><a href="#.">DIVIDEND</a></li>
-                  <li><a href="#.">EMPLOYMENT</a></li>
-                  <li><a href="#.">FINANCE</a></li>
-                  <li><a href="#.">news</a></li>
-                  <li><a href="#.">office</a></li>
-                  <li><a href="#.">ANALYSIS</a></li>
-                  <li><a href="#.">BOARD</a></li>
-                  <li><a href="#.">CAREERS</a></li>
-                  <li><a href="#.">DIVIDEND</a></li>
-                  <li><a href="#.">EMPLOYMENT</a></li>
-                  <li><a href="#.">FINANCE</a></li>
-                </ul>
-              </div>
-            </aside>
-          </div> --}}
+          
         </div>
       </section>
 @endsection
 
 @section('script')
 
-<script src="js/jquery.toc/jquery.toc.js"></script>
 <script src="js/jquery.toc/jquery.toc.min.js"></script>
 <script>
+   
+    function shomenu(){
+      $('.listtoc').slideToggle();
+    }
+
     $("#submit").on("click", function(){
         $('.animationloadpage').show();
     });
@@ -237,6 +191,12 @@
     //  var  strNew = str.replaceAll('href="', 'href="' + urlPath);
     //  $('#menu_ol_blog').html(strNew);
     }); 
+
+    $('#submit_comment_blog').on('click', function(){
+      $('#name').show();
+      $('#email').show();
+    })
+  
 </script>
 
 
