@@ -158,8 +158,6 @@
              </div>
          </div>
      </div>
-     
-
      @endif
      @if(count($blogCategories->where('parent_id',$categoryBlogs->id))>0)
      <div class="col-12 text-center" style="padding:50px 10px">
@@ -167,11 +165,12 @@
         <h2 style="color:#096F47;margin: auto;width: 589px;max-width: 88vw;font-weight:bold">
             Ctrl Media mang đến giải pháp dành riêng cho bạn    
         </h2>
-
         <div class="container">
          @if(!empty($blogCategories))
            <div class="row" style="margin-top:70px">
             @foreach ($blogCategories->where('parent_id',$categoryBlogs->id) as $blogCategorie)
+                @if($blogCategorie->showHome == 'A')
+
                 <div class="col-md-3 text-center childSerive">
                     <div class="img">
                         <a href="/{{@$blogCategorie->slug}}">
@@ -180,6 +179,23 @@
                     </div>
                     <a href="/{{@$blogCategorie->slug}}"><b>{{@$blogCategorie->title}}</b></a>
                 </div>
+                @endif
+
+                @foreach ($blogCategories->where('parent_id',$blogCategorie->id) as $blogCategori)
+                @if($blogCategori->showHome == 'A')
+
+                <div class="col-md-3 text-center childSerive">
+                    <div class="img">
+                        <a href="/{{@$blogCategori->slug}}">
+                            <img src="/storage/editor/blog/category/{{(@$blogCategori->image)}}" alt="">
+                        </a>
+                    </div>
+                    <a href="/{{@$blogCategori->slug}}"><b>{{@$blogCategori->title}}</b></a>
+                </div>
+                @endif
+
+            @endforeach
+
             @endforeach
            </div>
          @endif
@@ -188,7 +204,6 @@
      @endif
  </div>
 @endsection
-
 @section('script')
 <script>
     $('#cauHoi li').on('click', function(){
