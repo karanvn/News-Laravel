@@ -177,11 +177,11 @@ break;
 
     <aside class="col-md-4 col-sm-4">
         <div class="widget search_box"> 
-          {{-- <form>
-            <input type="search" placeholder="Search">
+          <form method="GET" action="{{route('searchBlog')}}">
+            <input type="search" placeholder="Search" name="name">
             <i class="fa fa-search"></i>
           </form>
-        </div>--}}
+        </div>
       
         <div class="widget"> 
           <h4>Danh mục</h4>
