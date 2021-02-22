@@ -24,6 +24,7 @@ class Blog extends Model
         }
         return $query;
     }
+   
     public function scopeUserId($query, $user_id)
     {
         if(!empty($user_id)){

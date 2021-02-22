@@ -3,7 +3,6 @@
 {{!empty($categoryBlogs->seo_title) ? $categoryBlogs->seo_title : @$categoryBlogs->title}}
 @endsection
 @section('head')
-
 @endsection
 {{-- section meta --}}
 @if(!empty($categoryBlogs))
@@ -38,9 +37,7 @@
     @endsection
 @endif
 {{-- end section meta --}}
-
 @section('content')
-
 
 @if(count($slideCategorys)>0)
 <div class="banner_service">
@@ -78,7 +75,6 @@
     </div>
   </section>
 @endif
-
  <div class="container-fuild">
      <h1 class="text-center" style="padding:15px">{{@$categoryBlogs->title}}</h1>
      <div class="col-12" style="padding:50px 20px">

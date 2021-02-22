@@ -170,6 +170,19 @@ class HomeController extends SiteController
         ]);
         return view('Web::blog.blog',compact('categories','blogs', 'limit'));
     }
+    public function searchBlog(Request $request){
+        $search = !empty($request->name) ? $request->name : '';
+        if(!empty($search)){
+            $datas = $this->blog->get_blogs([
+                'title' => @$search,
+                'limit' => '30'
+            ]);
+        }
+        return view('Web::blog.search_blog', [
+            'search' => $search,
+            'blogs' => @$datas
+        ]);
+    }
 
     
     public function getSlugCateBlog(){  // cron slug category blog
