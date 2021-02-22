@@ -97,7 +97,7 @@
         $slidei = 1;
     @endphp
     @foreach ($slideCategorys->where('extension','youtube') as $item)
-        {!!@$item->link_youtube !!}
+        <iframe width="100%" height="400" data-src="{{@$item->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
         @php
         $slidei++;
         break;
