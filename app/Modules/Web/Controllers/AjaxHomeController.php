@@ -6,14 +6,16 @@ namespace App\Modules\Web\Controllers;
 use App\Http\Controllers\SiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Modules\Blog\Models\Blog;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\Discount\Models\Discount;
 use App\Modules\Log\Libraries\LibActivityLog;
 use Illuminate\Support\Facades\DB;
 use App\Modules\Evaluate\Models\Evaluate;
 use App\Modules\Product\Models\Collection;
-use App\Modules\Evaluate\Models\EvaluateImage;
+use App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Blog\Models\BlogComment;
+use App\Modules\Evaluate\Models\EvaluateImage;
 class AjaxHomeController extends SiteController
 {
     public function __construct()
@@ -21,6 +23,10 @@ class AjaxHomeController extends SiteController
         $this->log            = new LibActivityLog();
         $this->evaluate = new Evaluate();
         $this->imageEvaluate = new EvaluateImage();
+        $this->blog            = new Blog;
+        $this->blogComment     = new BlogComment();
+        $this->blogCategory    = new BlogCategory;
+
         
     }
     public function commentblogNew(Request $request){
@@ -392,6 +398,50 @@ public function loadCollectionsPage(Request $request){
     return response()->json([
         'html' => $html,
         'success'   => $success
+    ]);
+}
+public function moreBlog($slug, Request $request){
+    $limit = 16;
+        $categoryBlogs = $this->blogCategory->get_category_slug($slug);
+
+        $categories = $this->blogCategory->where('parent_id','0')->get();
+
+        if($categoryBlogs->parent_id == '0'){
+            $categoriesParents = $this->blogCategory->where('parent_id',$categoryBlogs->id)->get();
+            if(count($categoriesParents)<=0){
+                $data = [
+                    'blog_category_id'  =>  $categoryBlogs->id,
+                    'limit'             => $limit
+                ];
+            }else{
+                $checkIdCategory = [];
+                foreach($categoriesParents as $categoriesParent){
+                    $checkIdCategory[] = $categoriesParent->id;
+                }
+                $data = [
+                    'blog_category_idArr' =>  $checkIdCategory,
+                    'limit'               => $limit
+                ];
+            }
+        }else{
+            $data = [
+                'blog_category_id'  =>  $categoryBlogs->id,
+                'limit'             => $limit
+            ];
+        }
+
+        $blogs          = $this->blog->get_blogs($data);
+        $html = view('Web::blog.moreAjax', [
+            'blogs' => $blogs
+            ])->render();
+        if($blogs->hasMorePages()){
+            $more = 1;
+        }else{
+            $more = 0;
+        }
+    return response()->json([
+        'html' => $html,
+        'more'  => $more
     ]);
 }
 }

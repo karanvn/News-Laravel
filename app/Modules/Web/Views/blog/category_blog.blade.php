@@ -41,15 +41,6 @@
 
 @section('content')
 
-<section class="innerpage-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-right">
-          <h2>{{@$categoryBlogs->title}}</h2>
-        </div>
-      </div>
-    </div>
-  </section>
 <style>
   .banner_service img, .banner_service iframe{
     width:100%;
@@ -79,141 +70,83 @@ break;
 @endforeach
 @endif
 </div>
+@else
 
+<section class="innerpage-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h1>{{@$categoryBlogs->title}}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
 @endif
 
-            <div class="blog-list-grid row auto-clear equal-container better-height " id="blog-pagination">
-                <section id="area-main" class="padding">
-                    <h5 class="hidden">hidden</h5>
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-8 col-sm-8">
-                @foreach ($blogs as $blog)
-                @php
-                    $slug   = $blog->category;
-                    $slug_1 = $slug->slug;
-                @endphp
-                <article class="blog-item-v3">
-                            <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}">
-                                <img src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail" class="img-responsive" style="width:100%"> 
-                            </a>
-                            <div class="blog-content" style="margin-top:20px">
-                                    <h3>{{ @$blog->title }} </h3>
-                                    <ul class="blog-author">
-                                        <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
-                                        <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
-                                        <li><a href="#."><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}}</a></li>
-                                <p>
-                                    {!!@$blog->description !!}
-                                </p>
-                            <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}" class="btn-common btn-green bounce-top">Đọc thêm</a>
-                        </div>
-                </article>
-                @endforeach
 
-    @if (count($blogs) >= $limit)
-        <div class="row col-12">
-            <div class="col-md-4 mx-auto">
-                <nav class="navigation pagination">
-                    <div class="lynessa-MyAccount-content" style="width: 100%">
-                        <div class="text-center">
-                            <fieldset></fieldset>
-                            <form method="post">
-                                <input type="hidden" name="limit" id="limit" value="{{$limit}}">
-                                <input type="hidden" id="currentPage" value="{{$blogs->currentPage()}}">
-                                <input type="hidden" id="lastPage" value="{{$blogs->lastPage()}}">
-                                <div class="btn-cont">
-                                    <a class="btn" id="loadMore" style="display: block;">
-                                        Xem thêm
-                                        <span class="line-1"></span>
-                                        <span class="line-2"></span>
-                                        <span class="line-3"></span>
-                                        <span class="line-4"></span>
-                                    </a>
-                                </div>
-                                <div class="animationloadpage" style="display: none;">
-                                    <div class="img"><img src="css/load.gif" alt=""></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </nav>
+
+
+
+
+<div class="container blogList-Ctrl" id="blog-pagination">
+        @foreach ($blogs as $blog)
+        @php
+            $slug   = $blog->category;
+            $slug_1 = $slug->slug;
+        @endphp
+        {{-- <article class="item-news">
+                    <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}">
+                        <img src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail"> 
+                    </a>
+                    <div class="blog-content">
+                            <h3>{{ @$blog->title }}</h3>
+                            <ul class="blog-author">
+                                <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
+                                <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
+                                <li><a href="#."><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}}</a></li>
+                            </ul>
+                            <div class="content-info">
+                                {!!@$blog->description !!}
+                            </div>
+                    {{-- <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}" class="btn-common btn-green bounce-top">Đọc thêm</a> --}}
+                {{--</div>
+        </article> --}}
+
+        <div class="col-md-6 item-news">
+            <div class="item-news-col">
+                <div class="news-col-right">
+                    <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}" title="{{ @$blog->title }}">
+                        <img src="{{get_image_blog_webp(@$blog->image)}}" alt="{{ @$blog->title }}" title="{{ @$blog->title }}" class="imgboxdv ls-is-cached ">
+                    </a>
+                </div>
+                <div class="news-col-left">
+                    <h3>
+                        <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}" title="{{ @$blog->title }}">
+                            {{ @$blog->title }}
+                        </a>
+                    </h3>
+                    <p style="opacity: 0.9">
+                    <i class="fa fa-bars" aria-hidden="true" style="margin-right:5px"></i> <a href="#."> By Admin</a>	
+                    <i class="fa fa-user-o" aria-hidden="true" style="margin:0 10px"></i> {{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}} </p>
+                </div>
+                
             </div>
         </div>
-      
-        @endif 
-        </div>
-        {{-- @if (count($blogs) >= $limit)
-        <div class="row">
-            <div class="col-md-4 mx-auto">
-                <nav class="navigation pagination">
-                    <div class="lynessa-MyAccount-content" style="width: 100%">
-                        <div class="text-center">
-                            <fieldset></fieldset>
-                            <form method="post">
-                                <input type="hidden" name="limit" id="limit" value="{{$limit}}">
-                                <input type="hidden" id="currentPage" value="{{$blogs->currentPage()}}">
-                                <input type="hidden" id="lastPage" value="{{$blogs->lastPage()}}">
-                                <div class="btn-cont">
-                                    <a class="btn" id="loadMore" style="display: block;">
-                                        Xem thêm
-                                        <span class="line-1"></span>
-                                        <span class="line-2"></span>
-                                        <span class="line-3"></span>
-                                        <span class="line-4"></span>
-                                    </a>
-                                </div>
-                                <div class="animationloadpage" style="display: none;">
-                                    <div class="img"><img src="css/load.gif" alt=""></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-      
-        @endif --}}
 
-    <aside class="col-md-4 col-sm-4">
-        <div class="widget search_box"> 
-          <form method="GET" action="{{route('searchBlog')}}">
-            <input type="search" placeholder="Search" name="name">
-            <i class="fa fa-search"></i>
-          </form>
-        </div>
-      
-        <div class="widget"> 
-          <h4>Danh mục</h4>
-          <ul class="category">
-              @foreach($blogCategories->where('position','BLOG')->where('parent_id','0') as $category)
-            <li><a href="{{ route('optimize_slug',['alias1'=>$category->slug.'.html']) }}">{{@$category->title}}</a></li>
-            @endforeach
-          </ul>
-        </div>
-        {{-- <div class="widget"> 
-          <h4>tags</h4>
-          <ul class="tag-cloud">
-            <li><a href="#.">ANALYSIS</a></li>
-            <li><a href="#.">BOARD</a></li>
-            <li><a href="#.">CAREERS</a></li>
-            <li><a href="#.">DIVIDEND</a></li>
-            <li><a href="#.">EMPLOYMENT</a></li>
-            <li><a href="#.">FINANCE</a></li>
-            <li><a href="#.">news</a></li>
-            <li><a href="#.">office</a></li>
-            <li><a href="#.">ANALYSIS</a></li>
-            <li><a href="#.">BOARD</a></li>
-            <li><a href="#.">CAREERS</a></li>
-            <li><a href="#.">DIVIDEND</a></li>
-            <li><a href="#.">EMPLOYMENT</a></li>
-            <li><a href="#.">FINANCE</a></li>
-          </ul>
-        </div>
-      </aside>
-    </div> --}}
-  </div>
+        @endforeach
+
+</div>
+
 </section>
+<div class=" text-center" style="margin: 30px 0">
+    @if($blogs->hasMorePages())
+    <input type="hidden" value="1" id="lastPage">
+    <input type="hidden" value="{{@$categoryBlogs->id}}" id="category_id">
+        <button id="seeMoreBlog" class="btn btn-success">
+            Xem thêm
+        </button>
+    @endif
+</div>
 
 @endsection
 
@@ -221,28 +154,21 @@ break;
     <script>
         var lastPage    = parseInt($('#lastPage').val());
         var currentPage = parseInt($('#currentPage').val());
-        var nextPage    = parseInt($('#currentPage').val())+1;
-        var limit       = $("#limit").val();
+        var nextPage    =lastPage+1;
         
-        $('#loadMore').on('click', function() {
-            if(nextPage<=lastPage)
-            {
+        $('#seeMoreBlog').on('click', function() {
                 $.ajax({
-                url : "{{ route('optimize_slug', ['alias1' => $categoryBlogs->slug]) }}?page="+nextPage,
+                url : "{{ route('moreBlog', ['slug' => $categoryBlogs->slug]) }}?page="+nextPage,
                 type : "get",
-                dataType:"text",
+                dataType:"json",
                 success : function (result){
-                    var blog = $(result).find('#blog-pagination').html();
-                    $('#blog-pagination').append(blog);
-                    $('#currentPage').val(nextPage);
+                    $('#blog-pagination').append(result.html);
                     nextPage++;
+                    if(result.more=='0'){
+                        $('#seeMoreBlog').hide();
+                    }
                 }
                 });
-            }
-            else{
-                $('#loadMore').remove();
-                $('.animationloadpage').hide();
-            }
         });
 
         var lengBreadcrumbs = $('.Breadcrumbs_ProductShow ul > li').length;

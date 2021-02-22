@@ -50,3 +50,115 @@ pointer-events: none;
  .innerpage-banner{
      color:#fff;
  }
+ .blog-item-ctrl{
+    width: 33.3333%;
+    padding: 10px;
+    float: left;
+    margin-top: 50px;
+    height: 550px;
+ }
+ .blog-item-ctrl img{
+     width:100%;
+     height:300px;
+     object-fit: cover;
+ }
+ .blogList-Ctrl{
+     padding:0;
+     margin-top:50px;
+ }
+ .news-col-left h3{
+     font-family: 'Open Sans';
+    font-weight: 500;
+    text-transform: none;
+ }
+ .blog-author{
+     list-style: none;
+     width:100%;
+     margin:0;
+ }
+ .blog-author li{
+    display: inline-block;
+    white-space: nowrap;
+    padding: 10px 10px 10px 0;
+ }
+ .blog-author i{
+     margin-right:5px;
+ }
+
+ 
+.item-news:nth-child(1),
+.item-news:nth-child(2),
+.item-news:nth-child(9),
+.item-news:nth-child(10)
+{
+  width:50%;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.item-news:nth-child(1) .news-col-right,
+.item-news:nth-child(2) .news-col-right,
+.item-news:nth-child(9) .news-col-right,
+.item-news:nth-child(10) .news-col-right
+{
+  height: 350px;
+
+}
+.item-news:nth-child(3),
+.item-news:nth-child(4),
+.item-news:nth-child(5),
+.item-news:nth-child(6),
+.item-news:nth-child(7),
+.item-news:nth-child(8),
+.item-news:nth-child(11),
+.item-news:nth-child(12),
+.item-news:nth-child(13),
+.item-news:nth-child(14),
+.item-news:nth-child(15),
+.item-news:nth-child(16){
+  width:33.33333%;
+  height: 394px;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+.avatarNew img{
+  width:100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+.small_new .item-news{
+    width: 25%;
+}
+.small_new .item-news-col h3 a {
+    line-height: 26px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.small_new .item-news:nth-child(1) .news-col-right,
+.small_new .item-news:nth-child(2) .news-col-right {
+    height: 300px;
+}
+.item-news-col {
+    /* border: 1px solid #E6E6E6; */
+    /* display: inline-block; */
+    width: 100%;
+}
+.item-news-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.item-news-col a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.item-news-col .news-col-left {
+    float: left;
+    width: 100%;
+    padding: 10px 0px;
+    display: block;
+    position: relative;
+}
