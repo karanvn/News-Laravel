@@ -115,7 +115,10 @@ class HomeController extends SiteController
             @$slug2 = $getSlug2->slug;
             @$slug3 = $getSlug3->slug;
             $params = [$slug1, $slug2, $slug3];
-
+            $categoryBlogsCeck = $this->blogCategory->get_category_slug($slug1);
+            if($categoryBlogsCeck){
+                return $this->getCategoryBlog($params);
+            }
             $flag = false;  // type 1-san_pham, 2-danh_sach_san_pham, 3-danh_sach_blog, 4-blog
 
            if((!empty($slug2) && $getSlug2->type == 4) || (!empty($slug3) && $getSlug3->type == 4) || (!empty($slug3) && $getSlug3->type == 4) ){ // Case blog 
@@ -125,15 +128,7 @@ class HomeController extends SiteController
             }elseif((!empty($alias1) && !empty($slug1) && $getSlug1->type == 3) || !empty($alias2) && !empty($slug2) && $getSlug2->type == 3){
                 $flag = $this->getCategoryBlog($params);
             }else{
-                
-            $categoryBlogsCeck = $this->blogCategory->get_category_slug($slug1[0]);
-            if($categoryBlogsCeck){
-                $flag = $this->getCategoryBlog($params);
-            }else{
                 return view('Web::error.404');
-            }
-                
-               
             }
             return $flag;
         }
@@ -327,7 +322,7 @@ class HomeController extends SiteController
 
     public function getCategoryBlog($params = []){
         // dd($params);
-        $limit = 18;
+        $limit = 16;
         $slug          = ($params[1] != '') ? $params[1] : $params[0];
         $categoryBlogs = $this->blogCategory->get_category_slug($slug);
 

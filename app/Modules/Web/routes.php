@@ -127,7 +127,10 @@ Route::group(['middleware' => ['web', 'locale']], function () {
         'uses' =>  $module_namespace . '\AjaxHomeController@commentblogNew'
     ]);
 
-    
+    Route::get('/moreblog/{slug}', [
+        'as'   => 'moreBlog',
+        'uses' =>  $module_namespace . '\AjaxHomeController@moreBlog'
+    ]);
 
     Route::get('/amp/{alias1?}/{alias2?}/{alias3?}', [
         'as'   => 'optimize_slug',
@@ -138,6 +141,7 @@ Route::group(['middleware' => ['web', 'locale']], function () {
         'as'   => 'optimize_slug',
         'uses' =>  $module_namespace . '\HomeController@handleURL'
     ]);
+   
     
     Route::get('/nhapshow/{slug}', [
         'as' => 'nhapshow',
