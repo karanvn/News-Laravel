@@ -68,7 +68,15 @@
     @endif
 </div>
 @else
-
+<section class="innerpage-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 style="color: #fff">{{@$categoryBlogs->title}}</h2>
+        </div>
+      </div>
+    </div>
+  </section>
 @endif
 
  <div class="container-fuild">
