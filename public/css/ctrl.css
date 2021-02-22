@@ -1,0 +1,49 @@
+#cauHoi li .content{
+    display: none;line-height: normal;
+ }
+ #cauHoi li{
+ border: solid 1px #c6ebde;
+ border-radius: 10px;
+ line-height: 58px;
+ padding-right: 15px;
+ padding-left: 15px;
+ background: #fff;
+ font-size: 18px;
+ font-weight: 400;
+ margin-bottom: 0;
+ cursor: pointer;margin-bottom: 20px;
+ }
+ #cauHoi li i{
+     float:right;
+     color: #2FD193;
+     transform: translate(0, 20px);
+ }
+ #cauHoi li i:nth-child(3){
+     display: none;
+ }
+ .childSerive .img img{
+     width:90px;
+     border-radius: 10px;
+     margin:10px 0;
+ }
+ .banner_service img, .banner_service iframe{
+     width: 100vw;
+height: 760px;
+cursor: none;
+pointer-events: none;
+
+ }
+ .banner_service{
+     position: relative;
+ }
+ .banner_service:before{
+     position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 80%;
+ /* background: #000; */
+ content: '';
+ background-image: linear-gradient(to bottom, black, transparent);
+ z-index: 1;
+ } 

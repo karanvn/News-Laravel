@@ -42,62 +42,16 @@
 @section('content')
 
 
-<section class="innerpage-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-right">
-          <h2 style="color: #fff">{{@$categoryBlogs->title}}</h2>
-        </div>
-      </div>
-    </div>
-  </section>
-          
-
-
-
-<style>
-    
-    #cauHoi li .content{
-       display: none;line-height: normal;
-    }
-    #cauHoi li{
-    border: solid 1px #c6ebde;
-    border-radius: 10px;
-    line-height: 58px;
-    padding-right: 15px;
-    padding-left: 15px;
-    background: #fff;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 0;
-    cursor: pointer;margin-bottom: 20px;
-    }
-    #cauHoi li i{
-        float:right;
-        color: #2FD193;
-        transform: translate(0, 20px);
-    }
-    #cauHoi li i:nth-child(3){
-        display: none;
-    }
-    .childSerive .img img{
-        width:90px;
-        border-radius: 10px;
-        margin:10px 0;
-    }
-    .banner_service img, .banner_service iframe{
-        width:100%;
-        height: 500px;
-    }
-</style>
-
 @if(count($slideCategorys)>0)
 <div class="banner_service">
     @php
         $slidei = 1;
     @endphp
     @foreach ($slideCategorys->where('extension','youtube') as $item)
-        <iframe width="100%" height="400" data-src="{{@$item->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
+    @php
+     $link_youtube_banner = preg_replace('/[a-zA-Z0-9-]+$/', '$0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=1&amp;showinfo=0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;playlist=$0', $item->link_youtube);
+    @endphp
+            <iframe src="{{$link_youtube_banner}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%" class=" lazyloaded"></iframe>
         @php
         $slidei++;
         break;
@@ -203,6 +157,7 @@
      </div>
      @endif
  </div>
+
 @endsection
 @section('script')
 <script>
