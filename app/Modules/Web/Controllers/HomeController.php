@@ -476,7 +476,7 @@ class HomeController extends SiteController
             'typearr' => ['PROJECT', 'DESIGN','GRAPHIC'], 
             'status' => 'A',
             'published'=>'A',
-            'Extence'  =>['image'],
+            'Extence'  =>['image','youtube'],
             'limit'     => '6'
             ]);
             $raitings = $this->evaluate->get_evatuates([
