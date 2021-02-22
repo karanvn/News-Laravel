@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    .banner_service img, .banner_service iframe{
+        width: 100vw;
+        height: 237px;
+        cursor: none;
+        pointer-events: auto;
+
+    }
+    .banner_service:before{
+        height:30%;
+    }
+  }
