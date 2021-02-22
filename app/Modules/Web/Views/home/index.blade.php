@@ -313,8 +313,15 @@
 						<div class="item-container"> 
 						
 							@if($galleri->extension == 'youtube')
-							<iframe width="100%" height="400" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
+							<iframe width="100%" height="380" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
 							@else
+							<a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
+								  <div class="overlay-inner">
+								  <h4 class="pink-text">{{@$galleri->name}}</h4>
+							<div class="line"></div>
+								  <p>{{@$galleri->description}}</p>
+							</div>
+							  </a>
 							<img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/>
 							@endif
 						</div>
@@ -340,8 +347,15 @@
 				<div class="wrap-col">
 					<div class="item-container"> 
 						@if($galleri->extension == 'youtube')
-						<iframe width="100%" height="400" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
+						<iframe width="100%" height="380" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
 						@else
+						<a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
+							<div class="overlay-inner">
+							<h4 class="pink-text">{{@$galleri->name}}</h4>
+					  <div class="line"></div>
+							<p>{{@$galleri->description}}</p>
+					  </div>
+						</a>
 						<img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/>
 						@endif
 					</div>

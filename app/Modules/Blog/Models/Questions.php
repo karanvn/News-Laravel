@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Questions extends Model
 {
     //
-    protected $table= 'Questions';
+    protected $table= 'questions';
     public function scopeCategory($query, $category)
     {
         if(!empty($category)){
