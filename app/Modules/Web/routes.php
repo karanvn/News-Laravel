@@ -8,6 +8,14 @@ Route::group(['middleware' => ['web', 'locale']], function () {
         'as' => 'home',
         'uses' =>  $module_namespace . '\HomeController@index'
     ]);
+    Route::get('/searchBlog', [
+        'as' => 'searchBlog',
+        'uses' =>  $module_namespace . '\HomeController@searchBlog'
+    ]);
+    Route::POST('/searchBlog', [
+        'as' => 'searchBlog',
+        'uses' =>  $module_namespace . '\HomeController@searchBlog'
+    ]);
     Route::get('/collections', [
         'as' => 'collections',
         'uses' =>  $module_namespace . '\HomeController@collections'

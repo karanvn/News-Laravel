@@ -62,6 +62,7 @@ class HomeController extends SiteController
         if(count($page_static)>0){
             return $this->pageStatic($alias1);
         }
+       
         if(!empty($slug2)){
             $blog  = $this->blog->get_blog_slug($slug2);
             if(!empty($blog)){
@@ -124,7 +125,15 @@ class HomeController extends SiteController
             }elseif((!empty($alias1) && !empty($slug1) && $getSlug1->type == 3) || !empty($alias2) && !empty($slug2) && $getSlug2->type == 3){
                 $flag = $this->getCategoryBlog($params);
             }else{
+                
+            $categoryBlogsCeck = $this->blogCategory->get_category_slug($slug1[0]);
+            if($categoryBlogsCeck){
+                $flag = $this->getCategoryBlog($params);
+            }else{
                 return view('Web::error.404');
+            }
+                
+               
             }
             return $flag;
         }
@@ -160,6 +169,19 @@ class HomeController extends SiteController
             'position' => 'BLOG'
         ]);
         return view('Web::blog.blog',compact('categories','blogs', 'limit'));
+    }
+    public function searchBlog(Request $request){
+        $search = !empty($request->name) ? $request->name : '';
+        if(!empty($search)){
+            $datas = $this->blog->get_blogs([
+                'title' => @$search,
+                'limit' => '30'
+            ]);
+        }
+        return view('Web::blog.search_blog', [
+            'search' => $search,
+            'blogs' => @$datas
+        ]);
     }
 
     

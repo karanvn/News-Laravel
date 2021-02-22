@@ -47,3 +47,6 @@ pointer-events: none;
  background-image: linear-gradient(to bottom, black, transparent);
  z-index: 1;
  } 
+ .innerpage-banner{
+     color:#fff;
+ }

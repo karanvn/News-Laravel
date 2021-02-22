@@ -35,7 +35,7 @@ echo '</script>';
   
 @endif
 
-    <div class="banner-wrapper-inner">
+    {{-- <div class="banner-wrapper-inner">
         <h1 class="page-title">{{ @$breadcrumb->title_short }}</h1>
         <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
             @php @$Breadcrumbs = @$categoryBlogs; @endphp
@@ -47,7 +47,7 @@ echo '</script>';
             </li>
             </ul>
         </div>
-    </div>
+    </div> --}}
 </div>
 <div class="main-container no-sidebar">
     <!-- POST LAYOUT -->
@@ -59,25 +59,28 @@ echo '</script>';
                     class="mx-auto blog-detail">
                     <div class="single-post-info">
                         <h2 class="post-title">{{ @$blog->title }}</h2>
-                        <div class="post-meta">   
-                            <div class="post-author col-4">
+                        <ul class="blog-infomartion">   
+                        <li>
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                {{ @$blog->user->name }} 
-                            </div>
-                            <div class="date col-4">
+                                By Admin
+                            </li>
+                            <li>
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 <a href="#">{{ @date_format($blog->created_at,'d-m-Y') }} </a>
-                            </div>
-                            <div class="post-comment col-4" style="text-align:left">
+                            </li>
+                            <li>
                                 ({{ $comments->count() }})Bình luận
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <a href="{{route('optimize_slug', ['alias1' => @$blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}"><i class="fa fa-file-o" aria-hidden="true"></i> {{ @$blog->category->title_short }}</a>
+                            </li>
+                        </ul>
                     </div>
                     {{-- {{ dd($breadcrumb) }} --}}
                     <div class="single-post-thumb">
                         <div class="post-thumb">
                             <amp-img src="{{asset('storage/editor/blog')}}/{{ @$blog->image }}" class="attachment-full size-full wp-post-image"
-                                alt="img" width="300" height="300"></amp-img>
+                                alt="img" width="500" height="300"></amp-img>
                         </div>
                     </div>
 
@@ -97,7 +100,7 @@ echo '</script>';
                     <div class="post-footer">
                         <div class="categories">
                             <span>Categories: </span>
-                            <a href="{{route('optimize_slug', ['alias1' => $blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}">{{ @$blog->category->title_short }}</a>
+                            <a href="{{route('optimize_slug', ['alias1' => @$blog->category->parent->slug, 'alias2' => @$blog->category->slug. '.html'])}}">{{ @$blog->category->title_short }}</a>
                         </div>
                     </div>
                     <div class="bg-light mt-4 px-2 mb-3">
@@ -135,36 +138,37 @@ echo '</script>';
                 </div>
             <div  id="respond" class="comment-respond">
                 <div class="lynessa-blog style-01">
-                    <div class="blog-list-owl owl-slick equal-container better-height"
-                        data-slick="{&quot;arrows&quot;:false,&quot;slidesMargin&quot;:30,&quot;dots&quot;:true,&quot;infinite&quot;:false,&quot;speed&quot;:300,&quot;slidesToShow&quot;:3,&quot;rows&quot;:1}"
-                        data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;30&quot;}}]">
+                    <div class="blog-list-owl owl-slick equal-container better-height">
                         @foreach($blogCates as $blogCate)
                         @php
                             $slug   = $blogCate->category;
                             $slug_1 = $slug->slug;
                         @endphp
-                        <article class="post-item post-grid rows-space-0 post-195 post type-post status-publish format-standard has-post-thumbnail hentry category-light category-table category-life-style tag-light tag-life-style">
-                            <div class="post-inner blog-grid">
-                                <div class="post-thumb">
+                        <article class="">
+                            <div class="">
+                                <div class="">
                                     <a href="{{ route("optimize_slug",['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blogCate->slug]) }}" tabindex="0">
-                                        <amp-img src="{{ asset(show_image_blog("storage/editor/blog/",$blogCate->image))}}" class="img-responsive attachment-370x330 size-370x330" alt="img" width="370" height="330"></amp-img></a>
+                                        <amp-img src="{{ asset(show_image_blog("storage/editor/blog/",$blogCate->image))}}" class="img-responsive attachment-370x330 size-370x330" alt="img" width="500" height="239"></amp-img></a>
                                 </div>
                                 <div class="post-content">
-                                    <div class="list-post-meta">
-                                        <div class="list-post-author col-4">
+                                  
+                                    <ul class="blog-infomartion-3">  
+                                        <li>
                                             <i class="fa fa-user" aria-hidden="true"></i>
-                                            <a> {{ @$blogCate->user->name }} </a>
-                                        </div>
-                                        <div class="date-time col-4" style="text-align:center">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <a>{{ date_format(@$blog->created_at,'d-m-Y') }}</a>
-                                        </div>
-                                        <div class="list-post-comment col-4" style="text-align:center">
+                                            By Admin
+                                        </li>
+                                        <li>
+                                            <div class="date-time col-4" style="text-align:center">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                <a>{{ date_format(@$blog->created_at,'d-m-Y') }}</a>
+                                            </div>
+                                        </li>
+                                        <li>
                                             <a>({{ @$blogCate->comments->count() }})Bình luận</a>
-                                        </div>
-                                    </div>
+                                        </li>
+                                    </ul>
                                     <div class="post-info equal-elem">
-                                        <h2 class="post-title"><a href="{{ route("optimize_slug",['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blogCate->slug]) }}" tabindex="0">{{ $blogCate->title_short }}.</a></h2>
+                                        <h2 class="post-title"><a href="{{ route("optimize_slug",['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blogCate->slug]) }}" tabindex="0">{{ $blogCate->title }}.</a></h2>
                                         {!! split_description_blog($blogCate->description, 0, 20) !!}......
                                     </div>
                                 </div>
@@ -173,7 +177,8 @@ echo '</script>';
                         @endforeach
                     </div>
                 </div>
-                {{-- END:BLOG-REF --}}                    
+                {{-- END:BLOG-REF --}} 
+                <div class="clear"></div>                   
                 <div id="comments" class="comments-area">
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">Bình luận của bạn</h3>

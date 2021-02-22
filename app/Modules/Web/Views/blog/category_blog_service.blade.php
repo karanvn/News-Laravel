@@ -3,7 +3,6 @@
 {{!empty($categoryBlogs->seo_title) ? $categoryBlogs->seo_title : @$categoryBlogs->title}}
 @endsection
 @section('head')
-
 @endsection
 {{-- section meta --}}
 @if(!empty($categoryBlogs))
@@ -38,9 +37,7 @@
     @endsection
 @endif
 {{-- end section meta --}}
-
 @section('content')
-
 
 @if(count($slideCategorys)>0)
 <div class="banner_service">
@@ -49,7 +46,7 @@
     @endphp
     @foreach ($slideCategorys->where('extension','youtube') as $item)
     @php
-     $link_youtube_banner = preg_replace('/[a-zA-Z0-9-]+$/', '$0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=1&amp;showinfo=0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;playlist=$0', $item->link_youtube);
+     $link_youtube_banner = preg_replace('/[a-zA-Z0-9]+$/', '$0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=1&amp;showinfo=0?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;playlist=$0', $item->link_youtube);
     @endphp
             <iframe src="{{$link_youtube_banner}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%" class=" lazyloaded"></iframe>
         @php
@@ -68,9 +65,16 @@
     @endif
 </div>
 @else
-
+<section class="innerpage-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 style="color: #fff">{{@$categoryBlogs->title}}</h2>
+        </div>
+      </div>
+    </div>
+  </section>
 @endif
-
  <div class="container-fuild">
      <h1 class="text-center" style="padding:15px">{{@$categoryBlogs->title}}</h1>
      <div class="col-12" style="padding:50px 20px">
