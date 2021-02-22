@@ -200,11 +200,7 @@
   </section>
   @endif
   
-  
-  
-  
   @if(count($whatWedos)>0)
- 
   <!-- What We Do Section -->
   <section class="we-do bg-grey padding">
 	<div class="container">
@@ -235,17 +231,11 @@
 			</p>
 		  </div>
 	  </div>
-		@endforeach
-		
-		
-		
+		@endforeach	
 	  </div>
 	</div>
   </section>
   @endif
-  
-  
-  
   <!-- Crteative Thinker -->
   @if(count($userAdmins)>0)
   <section id="thinkers" class="section-padding padding">
@@ -280,9 +270,6 @@
 	</div>
   </section>
   @endif
-  
-  
-  
   <!-- Work Project GALLERY -->
   @if(count($galleris)>0)
   <section id="project" class="wow fadeInUp section-padding" data-wow-duration="500ms" data-wow-delay="900ms">
@@ -324,14 +311,19 @@
 				<div class="{{@$styleGa[$sttGa]}} mix work-item {{@$galleri->type}}">
 					<div class="wrap-col">
 						<div class="item-container"> 
-						  <a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
+						
+							@if($galleri->extension == 'youtube')
+							<iframe width="100%" height="380" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
+							@else
+							<a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
 								  <div class="overlay-inner">
 								  <h4 class="pink-text">{{@$galleri->name}}</h4>
 							<div class="line"></div>
 								  <p>{{@$galleri->description}}</p>
 							</div>
 							  </a>
-						  <img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/> 
+							<img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/>
+							@endif
 						</div>
 					  </div>
 					</div>
@@ -354,14 +346,18 @@
 			<div class="{{@$styleGa[$sttGa]}} mix work-item {{@$galleri->type}}">
 				<div class="wrap-col">
 					<div class="item-container"> 
-					  <a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
-							  <div class="overlay-inner">
-							  <h4 class="pink-text">{{@$galleri->name}}</h4>
-						<div class="line"></div>
-							  <p>{{@$galleri->description}}</p>
-						</div>
-						  </a>
-					  <img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/> 
+						@if($galleri->extension == 'youtube')
+						<iframe width="100%" height="380" data-src="{{@$galleri->link_youtube}}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="lazyload" allowfullscreen></iframe>
+						@else
+						<a class="fancybox overlay text-center" data-fancybox-group="gallery" href="{{get_image_banner_webp($galleri->avatar)}}">
+							<div class="overlay-inner">
+							<h4 class="pink-text">{{@$galleri->name}}</h4>
+					  <div class="line"></div>
+							<p>{{@$galleri->description}}</p>
+					  </div>
+						</a>
+						<img data-src="{{get_image_banner_webp($galleri->avatar)}}" alt="work" class="lazyload"/>
+						@endif
 					</div>
 				  </div>
 				</div>

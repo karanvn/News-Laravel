@@ -350,8 +350,14 @@ class HomeController extends SiteController
             $questions = $this->questions->get_questions([
                 'category_id' => $categoryBlogs->id
             ]);
+            $blogsDuAn = $this->blog->get_blogs([
+                'blog_category_id'  => '49',
+                'limit'             => '4',
+                'status'    => 'A'
+            ]);
+        
 
-        return view('Web::blog.category_blog_service', compact('questions','blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit'));
+        return view('Web::blog.category_blog_service', compact('questions','blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit','blogsDuAn'));
         }
         return view('Web::blog.category_blog', compact('blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit'));
     }
@@ -476,7 +482,7 @@ class HomeController extends SiteController
             'typearr' => ['PROJECT', 'DESIGN','GRAPHIC'], 
             'status' => 'A',
             'published'=>'A',
-            'Extence'  =>['image'],
+            'Extence'  =>['image','youtube'],
             'limit'     => '6'
             ]);
             $raitings = $this->evaluate->get_evatuates([

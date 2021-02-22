@@ -95,7 +95,7 @@ break;
                 @endphp
                 <article class="blog-item-v3">
                             <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}">
-                                <img style src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail" class="img-responsive" style="width:100%"> 
+                                <img src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail" class="img-responsive" style="width:100%"> 
                             </a>
                             <div class="blog-content" style="margin-top:20px">
                                     <h3>{{ @$blog->title }} </h3>
