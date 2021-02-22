@@ -62,18 +62,13 @@ class HomeController extends SiteController
         if(count($page_static)>0){
             return $this->pageStatic($alias1);
         }
-         if(!empty($alias1)){
-            $blog  = $this->blog->get_blog_slug($alias1);
+       
+        if(!empty($slug2)){
+            $blog  = $this->blog->get_blog_slug($slug2);
             if(!empty($blog)){
                 return $this->getBlogSlug([$slug1, $slug2, $slug2]);
             }
         }
-        // if(!empty($slug2)){
-        //     $blog  = $this->blog->get_blog_slug($slug2);
-        //     if(!empty($blog)){
-        //         return $this->getBlogSlug([$slug1, $slug2, $slug2]);
-        //     }
-        // }
         switch ($slug1[0]) {
             case 'cron_slug_cate_product':
                 return $this->getSlugCateProduct();
@@ -130,7 +125,15 @@ class HomeController extends SiteController
             }elseif((!empty($alias1) && !empty($slug1) && $getSlug1->type == 3) || !empty($alias2) && !empty($slug2) && $getSlug2->type == 3){
                 $flag = $this->getCategoryBlog($params);
             }else{
+                
+            $categoryBlogsCeck = $this->blogCategory->get_category_slug($slug1[0]);
+            if($categoryBlogsCeck){
+                $flag = $this->getCategoryBlog($params);
+            }else{
                 return view('Web::error.404');
+            }
+                
+               
             }
             return $flag;
         }
