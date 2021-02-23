@@ -4,7 +4,7 @@
         <div class="container row mx-auto">
                 <div class="col-md-4 col-12">
                     <div class="logo-footer">
-                        <amp-img src="{{asset("/Logo/logo.png")}}" class="az_single_image-img attachment-full lazyload" alt="{{!empty($generals['SHOP']['shop_name']) ? $generals['SHOP']['shop_name'] : 'logo'}}" width="180" height="49"  style="margin-top:20px"></amp-img>
+                        <amp-img src="{{asset("/Logo/logo.png")}}" class="az_single_image-img attachment-full lazyload" alt="{{!empty($generals['SHOP']['shop_name']) ? $generals['SHOP']['shop_name'] : 'logo'}}" width="100" height="100"  style="margin-top:2px"></amp-img>
                     </div>
                     <div class="lynessa-listitem style-01">
                         <div class="listitem-inner">

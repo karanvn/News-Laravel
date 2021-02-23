@@ -28,22 +28,16 @@
 
 <script async="" src="https://cdn.ampproject.org/v0.js"></script>
 <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-
 <script custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js" async=""></script>
 <script custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" async=""></script>
 <script custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js" async=""></script>
 <script custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js" async=""></script>
-<!--<script custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js" async=""></script>-->
 <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
 <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
-
-{{-- <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script> --}}
-{{-- <script src='//theme.hstatic.net/1000003969/1000659821/14/jquery.min.1.11.0.js?v=533' type='text/javascript'></script> --}}
-{{-- <noscript><link rel="stylesheet" href="{{asset('css/pages/aos.css')}}"></noscript> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <style amp-custom>
@@ -148,8 +142,8 @@ color:#000}
 
     }
     header{
-        padding-top: 22px;
-        height: 62px;
+        padding-top: 8px;
+        height: 41px;
         box-shadow: 0 0 5px #eee;
 
     }
@@ -349,7 +343,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 .post-title {
-    margin-top: 0;
+    margin: 0 0 3px 0;
 }
 .post-content{
     padding: 0 20px;
@@ -357,7 +351,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .post-title{
     float: left;
-    padding-top: 10px;
+    padding-top: 0px;
     text-align: left;
     width:100%;
 }
@@ -531,6 +525,9 @@ amp-img{
 .menu_mobile li li a{
     padding-left:34px;
 }
+.menu_center {
+    transform:translate(0, -4px);
+}
 .menu_mobile li span{
     float:right;
     transform: translate(-10px,0);
@@ -599,6 +596,40 @@ iframe
 .lynessa-listitem.style-01 .title:hover span, .lynessa-listitem.style-02 .title:hover span{
   transform: rotate(90deg);
 }
+.post-thumb img{
+    width:100%;
+    height:auto;
+    object-fit: cover;
+    
+}
+.blog-infomartion, .blog-infomartion-3{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+.blog-infomartion li{
+  width:25%;
+  display: inline;
+  text-align: center;
+  white-space: nowrap;
+}
+.blog-infomartion-3 li{
+  width:33.33333%;
+  display: inline;
+  text-align: center;
+  white-space: nowrap;
+}
+.lever_1 i{
+    float: right;
+    margin: 8px;
+    opacity:0.6;
+    transition:0.3s;
+    font-size: 0.7em;
+}
+/* .lever_1:hover i{
+    transform:rotate(90deg);
+} */
 
 
 
