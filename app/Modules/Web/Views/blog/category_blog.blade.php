@@ -157,6 +157,7 @@ break;
         var nextPage    =lastPage+1;
         
         $('#seeMoreBlog').on('click', function() {
+            $('#seeMoreBlog').html('Đang tải');
                 $.ajax({
                 url : "{{ route('moreBlog', ['slug' => $categoryBlogs->slug]) }}?page="+nextPage,
                 type : "get",
@@ -167,6 +168,8 @@ break;
                     if(result.more=='0'){
                         $('#seeMoreBlog').hide();
                     }
+            $('#seeMoreBlog').html('Xem thêm');
+
                 }
                 });
         });
