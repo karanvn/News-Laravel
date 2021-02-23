@@ -16,7 +16,8 @@
                 <label class="col-form-label">Giá</label>
                 <input class="form-control form-control-lgs" type="number" name="PRICING[price][]" placeholder="" value="">
                 <label class="col-form-label">Giới thiệu</label>
-                <input class="form-control form-control-lgs" type="text" name="PRICING[discription][]" placeholder="" value=""> 
+                <input class="form-control form-control-lgs" type="text" name="PRICING[discription][]" placeholder="" value="">
+                <p><small class="text-success"> Nội dung trong giới thiệu cách nhau bởi giấu phẩy. </small></p> 
             </div>
         </div>
     </div>
@@ -42,8 +43,11 @@
                     <input class="form-control form-control-lgs" type="text" name="PRICING[name][]" placeholder="" value="{{ @$pricing['name'][$i] }}"> 
                     <label class="col-form-label">Giá</label>
                 <input class="form-control form-control-lgs" type="number" name="PRICING[price][]" placeholder="" value="{{ @$pricing['price'][$i] }}"> 
+                <label class="col-form-label">Giới thiệu</label>
                 <input class="form-control form-control-lgs" type="text" name="PRICING[discription][]" placeholder=""  value="{{ @$pricing['discription'][$i] }}"> 
-                    </div>
+                <p><small class="text-success"> Nội dung trong giới thiệu cách nhau bởi giấu phẩy. </small></p> 
+
+            </div>
             </div>
         </div>
     </div>

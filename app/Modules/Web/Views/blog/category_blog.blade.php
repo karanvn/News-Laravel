@@ -89,28 +89,12 @@ break;
 
 
 <div class="container blogList-Ctrl" id="blog-pagination">
+    @if(count($blogs)>0)
         @foreach ($blogs as $blog)
         @php
             $slug   = $blog->category;
             $slug_1 = $slug->slug;
         @endphp
-        {{-- <article class="item-news">
-                    <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}">
-                        <img src="{{get_image_blog_webp(@$blog->image)}}" alt="img-blog-detail"> 
-                    </a>
-                    <div class="blog-content">
-                            <h3>{{ @$blog->title }}</h3>
-                            <ul class="blog-author">
-                                <li><a href="#."><i class="fa fa-user"></i>By Admin</a></li>
-                                <li><a href="#."><i class="fa fa-comment-o"></i>({{ $blog->comments->count() }})Bình luận</a></li>
-                                <li><a href="#."><i class="fa fa-clock-o"></i>{{ !empty($blog->created_at) ? date_format($blog->created_at,'d-m-Y') : ''}}</a></li>
-                            </ul>
-                            <div class="content-info">
-                                {!!@$blog->description !!}
-                            </div>
-                    {{-- <a href="{{ route('optimize_slug',['alias1' => @$slug->parent->slug, 'alias2' => @$slug_1, 'alias3' => $blog->slug]) }}" class="btn-common btn-green bounce-top">Đọc thêm</a> --}}
-                {{--</div>
-        </article> --}}
 
         <div class="col-md-6 item-news">
             <div class="item-news-col">
@@ -134,7 +118,9 @@ break;
         </div>
 
         @endforeach
-
+        @else
+        <p class="text-center">Danh sách rổng!</p>
+        @endif
 </div>
 
 </section>
@@ -147,6 +133,16 @@ break;
         </button>
     @endif
 </div>
+{{-- child --}}
+@if(!empty($categoryBlogs))
+  <div class="listCategory">
+    @foreach($blogCategories->where('parent_id', $categoryBlogs->id)->where('status','A') as $categoryChild)
+        <a href="{{ route('optimize_slug',['alias1'=>$categoryBlogs->slug, 'alias2'=>$categoryChild->slug.'.html']) }}">
+            {{@$categoryChild->title}}
+        </a>
+@endforeach
+  </div>
+@endif
 
 @endsection
 

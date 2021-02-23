@@ -57,6 +57,8 @@ class HomeController extends SiteController
         $test1 = in_array('html', $slug1);
         $slug2 = explode('.', $alias2);
         $test2 = in_array('html', $slug2);
+        $alias3 = explode('.', $alias3)[0];
+        
 
         $page_static = $this->pageStatic->get_pages(['slug'=>$slug1[0]]);
         if(count($page_static)>0){
@@ -115,10 +117,7 @@ class HomeController extends SiteController
             @$slug2 = $getSlug2->slug;
             @$slug3 = $getSlug3->slug;
             $params = [$slug1, $slug2, $slug3];
-            $categoryBlogsCeck = $this->blogCategory->get_category_slug($slug1);
-            if($categoryBlogsCeck){
-                return $this->getCategoryBlog($params);
-            }
+           
             $flag = false;  // type 1-san_pham, 2-danh_sach_san_pham, 3-danh_sach_blog, 4-blog
 
            if((!empty($slug2) && $getSlug2->type == 4) || (!empty($slug3) && $getSlug3->type == 4) || (!empty($slug3) && $getSlug3->type == 4) ){ // Case blog 
@@ -323,7 +322,15 @@ class HomeController extends SiteController
     public function getCategoryBlog($params = []){
         // dd($params);
         $limit = 16;
-        $slug          = ($params[1] != '') ? $params[1] : $params[0];
+        if(!empty($params[2])){
+            $slug = $params[2];
+        }else{
+            if(!empty($params[1])){
+                $slug = $params[1];
+            }else{
+                $slug = $params[0];
+            }
+        }
         $categoryBlogs = $this->blogCategory->get_category_slug($slug);
 
         $categories = $this->blogCategory->where('parent_id','0')->get();
@@ -336,7 +343,7 @@ class HomeController extends SiteController
                     'limit'             => $limit
                 ];
             }else{
-                $checkIdCategory = [];
+                $checkIdCategory[] = $categoryBlogs->id;
                 foreach($categoriesParents as $categoriesParent){
                     $checkIdCategory[] = $categoriesParent->id;
                 }
