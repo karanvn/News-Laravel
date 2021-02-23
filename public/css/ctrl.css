@@ -160,3 +160,25 @@ pointer-events: none;
     display: block;
     position: relative;
 }
+.listCategory{
+    padding:10px;
+    text-align: center;
+    margin-bottom:30px;
+}
+.listCategory a{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eeee;
+    margin: 5px;
+    transition:0.3s ease-in;
+}
+.listCategory a{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eeee;
+    margin: 5px;
+}
+.listCategory a:hover{
+    color:#fff;
+    background:chocolate;
+}

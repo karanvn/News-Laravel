@@ -398,12 +398,18 @@
 		<h3 class="pricing_title">{{@$Pricing['type'][$i]}}</h3>
 		<div class="pricing_price"><span class="pricing_currency">đ</span>{{ Number_format(@$Pricing['price'][$i])}}</div>
 		<p class="pricing_sentence">{{@$Pricing['name'][$i]}}</p>
-		{!! @$Pricing['discription'][$i] !!}
+		@php $Pricingdis = explode(',', $Pricing['discription'][$i]); @endphp
+		<ul class="pricing_list">
+			@if(count($Pricingdis)>0)
+				@foreach ($Pricingdis as $Pricingdi)
+				<li class="pricing_feature">{{@$Pricingdi}}</li>
+				@endforeach
+			@endif
+		</ul>
 		<a class="pricing_action text-center" href="#contact">Chọn lựa</a>
 	</div>
 	  @endfor
-
-			  </div>
+</div>
   </div>
   </div>
   </div>
