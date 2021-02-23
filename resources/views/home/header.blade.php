@@ -39,9 +39,7 @@
     <link href="{{asset('template/css/onepage.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
     <link href="{{asset('css/ctrl.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
     <link href="{{asset('css/reponsive_ctrl.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
-
     {{-- <link href="{{asset('template/css/loader-colorful.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> --}}
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .loader {

@@ -1,4 +1,64 @@
 @media only screen and (max-width: 768px) {
+    #fixed-collapse-navbar{
+        overflow: auto;
+        max-height: 100vh;
+    }
+    #navigation.affix-top{
+        background-color: #222;
+        color:#fff;
+        -webkit-box-shadow: 0 2px 10px -1px rgb(87 97 100 / 35%);
+        -moz-box-shadow: 0 2px 10px -1px rgba(87,97,100,0.35);
+        box-shadow: 0 2px 10px -1px rgb(87 97 100 / 35%);
+    }
+    .nav-ctrl i{
+        display: inline-block;
+    /* float: right; */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: 0.3s;
+    }
+    #navigation.affix-top .nav-ctrl .child-Ctrl , #navigation.affix-top .nav-ctrl ul li p{
+        background-color: #222;
+        color:#fff;
+    }
+    #navigation.affix-top .navbar-default .navbar-nav > li > a {
+        color: #fff;
+        padding: 22px 0;
+    }
+    .nav-ctrl .child-Ctrl{
+        position: unset;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 0 0 transparent;
+    background-image: none;
+    }
+    .nav-ctrl ul li ul{
+        /* max-height:0;
+        transition: 0.3s;
+        overflow: hidden; */
+        display: none;
+    } 
+    .nav-ctrl ul li ul ul{
+        /* max-height:0;
+        transition: 0.3s;
+        overflow: hidden; */
+        display: block;
+    } 
+    .nav-ctrl li:hover .child-Ctrl-blog{
+        display:none;
+    }
+    /* .nav-ctrl ul li:hover ul{
+        max-height: 400px;
+    } */
+    .nav-ctrl ul li:hover i{
+       transform:rotate(90deg);
+    }
+    .nav-ctrl ul li {
+        display: block;
+        width: auto;
+    }
     .banner_service img, .banner_service iframe{
         width: 100vw;
         height: 237px;
@@ -423,6 +483,7 @@ Media Queries
     }
 }
 @media only screen and (max-width: 768px){
+    
     .note .bg_cate{
         line-height: 13px;
     }

@@ -60,8 +60,8 @@
              </div>
               
             
-                <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right">
-                  <ul class="nav navbar-nav">
+                <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right ">
+                  <ul class="nav navbar-nav nav-ctrl">
                     <li class="hidden">
                        <a class="page-scroll" href="#page-top"></a>
                     </li>
@@ -71,72 +71,64 @@
                     <li>
                         <a class="page-scroll" href="#about">GIỚI THIỆU</a>
                     </li>
-                      @foreach ($blogCategories->where('id','34')->where('status','A') as $blogCategorie)
+                    <li><a>DỊCH VỤ</a>
+                    <ul class="child-Ctrl">
+                     @foreach($blogCategories->where('id','34')->where('status','A')->where('parent_id','0') as $blogCategorie)
+                        <li class="col-50">
+                          <a href="/{{@$blogCategorie->slug}}"><b>Thiết kế website chuyên nghiệp</b></a> <i class="fa fa-chevron-right i_menu" aria-hidden="true" id="i_{{@$blogCategorie->id}}"></i>
+                          <p><small>Nền tảng của thành công trên internet</small></p>
+                          <ul class="menu_{{@$blogCategorie->id}}">
+                          @foreach($blogCategories->where('parent_id',@$blogCategorie->id)->where('status','A') as $blogCategori)
                             <li>
-                              <a class="page-scroll" href="{{@$blogCategorie->slug}}">{{@$blogCategorie->title}}</a>
-                              <div class="clidLi">
-                                  @foreach ($blogCategories->where('parent_id','34')->where('status','A') as $blogCategori)
-                                     <ul>
-                                       <li>
-                                        <a class="page-scroll" href="{{@$blogCategori->slug}}">{{@$blogCategori->title}}</a>
-                                       </li>
-                                       @foreach ($blogCategories->where('parent_id',$blogCategori->id)->where('status','A') as $blogCategor)
-                                         <li>
-                                          <a class="page-scroll" href="{{@$blogCategor->slug}}">{{@$blogCategor->title}}</a>
-                                         </li>
-                                    @endforeach
-                                     </ul>
-                                  @endforeach
-                              </div>
-                          </li> 
-                      @endforeach
-                      @foreach ($blogCategories->where('id','41')->where('status','A') as $blogCategorie)
-                      <li>
+                              <a href="/{{@$blogCategori->slug}}">{{@$blogCategori->title}}</a> 
+                              <ul>
+                                @foreach($blogCategories->where('parent_id',@$blogCategori->id)->where('status','A') as $blogCategor)
+                                <li>
+                                  <a href="/{{@$blogCategor->slug}}">{{@$blogCategor->title}}</a>
+                                </li>
+                           @endforeach
+                              </ul>
+
+                            </li>
+                       @endforeach
+                      </ul>
+                        </li>
+                     @endforeach
+                     <li class="col-50"><a><b>DỊCH VỤ</b></a>  <i class="fa fa-chevron-right i_menu" aria-hidden="true" id="i_dichvu"></i>
+                      <p><small>Nền tảng của thành công trên internet</small></p>
+                    <ul class="menu_dichvu">
+                      @foreach ($blogCategories->whereIn('id',['41','35'])->where('status','A') as $blogCategorie)
+                      <li class="d-block">
                         <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
                       </li>
                       @endforeach
-
-                      @foreach ($blogCategories->where('id','35')->where('status','A') as $blogCategorie)
-                      <li>
-                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
-                      </li>
-                      @endforeach
-
+                        
+                    
+                    </ul></li>
+                    </ul>
+                    </li>
                       @foreach ($blogCategories->where('id','49')->where('status','A') as $blogCategorie)
                       <li>
                         <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
-                        <div class="clidLi">
-                          @foreach ($blogCategories->where('parent_id',@$blogCategorie->id)->where('status','A') as $blogCategori)
-                             <ul>
-                               <li>
-                                <a class="page-scroll" href="{{ route('optimize_slug',['alias1'=>'blog', 'alias2'=>$blogCategori->slug.'.html']) }}">{{@$blogCategori->title}}</a>
-                               </li>
-                               @foreach ($blogCategories->where('parent_id',$blogCategori->id)->where('status','A') as $blogCategor)
-                                 <li>
-                                  <a class="page-scroll" href="{{ route('optimize_slug',['alias1'=>'blog','alias2'=>@$blogCategori->slug,'alias3'=>$blogCategor->slug.'.html']) }}">{{@$blogCategor->title}}</a>
-                                 </li>
-                            @endforeach
-                             </ul>
-                          @endforeach
-                      </div>
                       </li>
                       @endforeach
                     <li>
                       <a href="/blog.html" class="page-scroll">BLOG</a>
-                      <div class="clidLi">
+                      <ul class="child-Ctrl-blog">
                         @foreach ($blogCategories->where('parent_id','2')->where('status','A') as $blogCategori)
-                           <ul>
                              <li>
                               <a class="page-scroll" href="{{ route('optimize_slug',['alias1'=>'blog', 'alias2'=>$blogCategori->slug.'.html']) }}">{{@$blogCategori->title}}</a>
+                              <ul>
+                                @foreach ($blogCategories->where('parent_id',$blogCategori->id)->where('status','A') as $blogCategor)
+                                <li>
+                                 <a class="page-scroll" href="{{ route('optimize_slug',['alias1'=>'blog','alias2'=>@$blogCategori->slug,'alias3'=>$blogCategor->slug.'.html']) }}">{{@$blogCategor->title}}</a>
+                                </li>
+                           @endforeach
+                              </ul>
                              </li>
-                             @foreach ($blogCategories->where('parent_id',$blogCategori->id)->where('status','A') as $blogCategor)
-                               <li>
-                                <a class="page-scroll" href="{{ route('optimize_slug',['alias1'=>'blog','alias2'=>@$blogCategori->slug,'alias3'=>$blogCategor->slug.'.html']) }}">{{@$blogCategor->title}}</a>
-                               </li>
-                          @endforeach
-                           </ul>
+                            
                         @endforeach
-                    </div>
+                    </ul>
                     </li>
                     <li>
                       <a href="#contact" class="page-scroll">LIÊN HỆ</a>
