@@ -24,7 +24,6 @@
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     <link rel="dns-prefetch" href="//connect.facebook.net">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link href="{{asset('css/ctrl.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
     {{-- <link rel='stylesheet' id='add-google-fonts-css' href='//fonts.googleapis.com/css?family=Encode+Sans%3A400%2C500%2C600%2C700%2C8...ay=swap' type='text/css' media='all' /> --}}
     <link href="/css/pages/fontrelaway.css" rel="preload" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('template/css/bootstrap.min.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
@@ -38,6 +37,7 @@
     <link href="{{asset('template/css/zerogrid.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('template/css/jPushMenu.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('template/css/onepage.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
+    <link href="{{asset('css/ctrl.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
     <link href="{{asset('css/reponsive_ctrl.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> 
 
     {{-- <link href="{{asset('template/css/loader-colorful.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'"> --}}
