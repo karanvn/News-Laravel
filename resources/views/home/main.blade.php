@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <title>@yield('title')</title>
     @yield('style')
-    <base href="{{asset('')}}">
+    {{-- <base href="{{asset('')}}"> --}}
     @yield('meta')
     @include('home.header')
     @yield('head')

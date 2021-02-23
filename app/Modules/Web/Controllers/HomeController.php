@@ -373,7 +373,6 @@ class HomeController extends SiteController
                 'status'    => 'A'
             ]);
         
-        return '11111';
         return view('Web::blog.category_blog_service', compact('questions','blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit','blogsDuAn'));
         }
         return view('Web::blog.category_blog', compact('blogs','categoryBlogs','categories','nameCategory','slideCategorys', 'limit'));
