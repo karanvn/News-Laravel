@@ -12,44 +12,59 @@
 </head>
 <body class="single single-product">
     <amp-sidebar id='sidebar' layout='nodisplay' side="left">
+        <form method="POST" action-xhr="{{route('searchBlog')}}" target="_top">
+            <input type="search" placeholder="Search" name="name">
+            @csrf
+            <i class="fa fa-search"></i>
+          </form>
         <ul class="menu_mobile">
-            <li class="lever_1"><a href="/">Trang chủ</a>
+            <li class="lever_1">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="lever_1">
+                    <a href="#about">GIỚI THIỆU</a>
+            </li>
+            @foreach ($blogCategories->where('id','34') as $blogCategorie)
+            <li class="lever_1">
+                              <a class="page-scroll" href="{{@$blogCategorie->slug}}">{{@$blogCategorie->title}}</a>
+                              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                              <ul>
+                                  @foreach ($blogCategories->where('parent_id','34') as $blogCategori)
+                                        <li class="lever_1">
+                                        <a class="page-scroll" href="{{@$blogCategori->slug}}">{{@$blogCategori->title}}</a>
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        <ul>
+                                       @foreach ($blogCategories->where('parent_id',$blogCategori->id) as $blogCategor)
+                                       <li class="lever_1">
+                                          <a class="page-scroll" href="{{@$blogCategor->slug}}">{{@$blogCategor->title}}</a>
+                                         </li>
+                                    @endforeach
+                                        </ul>
+                                    </li>
+                                    
+                                  @endforeach
+                                </ul>
+                          </li> 
+                      @endforeach
+                      @foreach ($blogCategories->where('id','41') as $blogCategorie)
+                      <li class="lever_1">
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
 
-            @php
-                $menuParent = @$menuProducts->where('parent_id','0');
-            @endphp
-            @foreach ($menuParent as $item)
-            <li class="lever_1"><a href="{{route('optimize_slug', ['alias1'=>$item->slug.'.html'])}}">{{$item->name}}</a> <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                @php $menuchild = $menuProducts->where('parent_id',$item->id); @endphp
-                <ul>
-                    @foreach($menuchild as $val)
-                        <li class="lever_2"><a href="{{route('optimize_slug', ['alias1'=>$item->slug, 'alias2'=>$val->slug.'.html'])}}" title="Áo khoác da">{{$val->name}}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-            @endforeach
-            {{-- blog --}}
-            <li class="lever_1"> <a href="/blog.html">Blog</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                <ul>
-                @foreach(getBlogParentID('0') as $category)
-                @if($category->position=="BLOG" && $category->status=="A")
-                <li class="lever_2">
-                   <a href="{{ route('optimize_slug',['alias1'=>$category->slug.'.html']) }}">{{ $category->title_short }}</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                    <ul>
-                        @foreach(getBlogParentID($category->id) as $child)
-                        @if($child->status=="A")
-                        <li class="lever_2">
-                            <a href="{{ route('optimize_slug',['alias1'=>$category->slug, 'alias2'=>$child->slug.'.html']) }}">{{ $child->title_short }}</a>
-                        </li>
-                        @endif
-                        @endforeach
-                    </ul>
-                
-                </li>
-                @endif
-                @endforeach
-            </ul>
-            </li>
+                      @foreach ($blogCategories->where('id','35') as $blogCategorie)
+                      <li class="lever_1">
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
+
+                      @foreach ($blogCategories->where('id','49') as $blogCategorie)
+                      <li class="lever_1">
+                        <a href="/{{@$blogCategorie->slug}}" class="page-scroll">{{@$blogCategorie->title}}</a>
+                      </li>
+                      @endforeach
+                    
+
         </ul>
         <div class="divhot">
             <div><i class="fa fa-phone" aria-hidden="true"></i>HOTLINE : <a href="tel:0708669789">0708.669.789</a></div>
@@ -63,7 +78,7 @@
             {{-- <div class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></div> --}}
         </div>
         <div class="menu_center col-7" style="text-align:right">
-            <amp-img src="/Logo/logo.png" width="190" height="40"></amp-img>
+            <amp-img src="/Logo/logo.png" width="90" height="40"></amp-img>
         </div>
        
     </header>

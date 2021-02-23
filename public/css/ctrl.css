@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body{
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+}
 #cauHoi li .content{
     display: none;line-height: normal;
  }
@@ -159,4 +163,26 @@ pointer-events: none;
     padding: 10px 0px;
     display: block;
     position: relative;
+}
+.listCategory{
+    padding:10px;
+    text-align: center;
+    margin-bottom:30px;
+}
+.listCategory a{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eeee;
+    margin: 5px;
+    transition:0.3s ease-in;
+}
+.listCategory a{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eeee;
+    margin: 5px;
+}
+.listCategory a:hover{
+    color:#fff;
+    background:chocolate;
 }

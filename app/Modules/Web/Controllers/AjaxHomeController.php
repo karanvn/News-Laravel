@@ -414,7 +414,8 @@ public function moreBlog($slug, Request $request){
                     'limit'             => $limit
                 ];
             }else{
-                $checkIdCategory = [];
+                $checkIdCategory[] = $categoryBlogs->id;
+
                 foreach($categoriesParents as $categoriesParent){
                     $checkIdCategory[] = $categoriesParent->id;
                 }
