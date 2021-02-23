@@ -868,6 +868,7 @@ Media Queries
   margin:20px 0 10px 0;
 
 }
+.item-news:nth-child(n+16),
 .item-news:nth-child(2),
 .item-news:nth-child(3),
 .item-news:nth-child(4),
@@ -885,6 +886,7 @@ Media Queries
   margin-bottom: 10px;
 
 }
+.item-news:nth-child(n+16)  .news-col-right,
 .item-news:nth-child(2)  .news-col-right,
 .item-news:nth-child(3) .news-col-right,
 .item-news:nth-child(4) .news-col-right,
@@ -902,6 +904,7 @@ Media Queries
    float: left;
    height: 119px;
 }
+.item-news:nth-child(n+16)  .news-col-left,
 .item-news:nth-child(2)  .news-col-left,
 .item-news:nth-child(3) .news-col-left,
 .item-news:nth-child(4) .news-col-left,
@@ -921,6 +924,7 @@ Media Queries
    float: right;
    padding: 0 0 0 10px;
 }
+.item-news:nth-child(n+16)  .news-col-left p,
 .item-news:nth-child(2)  .news-col-left p,
 .item-news:nth-child(3) .news-col-left p,
 .item-news:nth-child(4) .news-col-left p,

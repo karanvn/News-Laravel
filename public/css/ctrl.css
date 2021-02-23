@@ -103,6 +103,7 @@ pointer-events: none;
   height: 350px;
 
 }
+.item-news:nth-child(n+16),
 .item-news:nth-child(3),
 .item-news:nth-child(4),
 .item-news:nth-child(5),
@@ -140,8 +141,6 @@ pointer-events: none;
     height: 300px;
 }
 .item-news-col {
-    /* border: 1px solid #E6E6E6; */
-    /* display: inline-block; */
     width: 100%;
 }
 .item-news-col img {
@@ -154,7 +153,6 @@ pointer-events: none;
     text-decoration: none;
     color: #000000;
 }
-
 .item-news-col .news-col-left {
     float: left;
     width: 100%;
