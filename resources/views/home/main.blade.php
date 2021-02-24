@@ -131,7 +131,7 @@
                     </ul>
                     </li>
                     <li>
-                      <a href="#contact" class="page-scroll">LIÊN HỆ</a>
+                      <a href=/lien-he.html class="page-scroll">LIÊN HỆ</a>
                     </li>
                   </ul>
                 </div>
@@ -146,7 +146,6 @@
     
     @include('home.footer')
     @yield('script')
-
 </body>
 </html>
 

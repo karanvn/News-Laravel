@@ -15,6 +15,7 @@ use App\Modules\Evaluate\Models\Evaluate;
 use App\Modules\Product\Models\Collection;
 use App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Blog\Models\BlogComment;
+use App\Modules\Feedback\Models\FeedBack;
 use App\Modules\Evaluate\Models\EvaluateImage;
 class AjaxHomeController extends SiteController
 {
@@ -26,6 +27,7 @@ class AjaxHomeController extends SiteController
         $this->blog            = new Blog;
         $this->blogComment     = new BlogComment();
         $this->blogCategory    = new BlogCategory;
+        $this->feedback = new FeedBack();
 
         
     }
@@ -443,6 +445,45 @@ public function moreBlog($slug, Request $request){
     return response()->json([
         'html' => $html,
         'more'  => $more
+    ]);
+}
+public function priceshowModalFrm(Request $request){
+    $conditions = [
+        'fullname' => 'required',
+        'email' => 'email',
+        'phone' => 'required',
+        'company' => 'required',
+        'type_web' => 'required',
+        'price' => 'required'
+    ];
+    
+
+    $messages = [
+        'required'  => 'Xin vui lòng nhập đầy đủ thông tin'
+    ];
+    $validator = Validator::make($request->all(),
+        $conditions,
+        $messages
+    );
+    $passes = $validator->passes();
+    $toastr = 'Xin vui lòng nhập đẩy đủ thông tin';
+    if($passes){
+        $new = $this->feedback;
+        $new->fullname = $request->fullname;
+        $new->email = $request->email;
+        $new->phone = $request->fullname;
+        $new->company = $request->company;
+        $new->demo = @$request->company;
+        $new->type_web = $request->type_web;
+        $new->price = $request->price;
+        $new->type = 'PRICE';
+        
+        $new->save();
+    }
+    $errors = $validator->errors();
+ 
+    return response()->json([
+        'passes'   => $passes
     ]);
 }
 }

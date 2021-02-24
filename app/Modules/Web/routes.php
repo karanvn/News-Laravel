@@ -58,6 +58,10 @@ Route::group(['middleware' => ['web', 'locale']], function () {
         'as' => 'ajaxdanhmuc',
         'uses' =>  $module_namespace . '\AjaxHomeController@ajaxdanhmuc'
     ]);
+    Route::post('/priceshowModalFrm', [
+        'as' => 'priceshowModalFrm',
+        'uses' =>  $module_namespace . '\AjaxHomeController@priceshowModalFrm'
+    ]);
   
 
     Route::get('/autocomplete-ajax/{name?}', [
@@ -116,6 +120,7 @@ Route::group(['middleware' => ['web', 'locale']], function () {
         'as' => 'pages-none',
         'uses' =>  $module_namespace . '\HomeController@getPagesNone'
     ]);
+    
     
     Route::get('/danh-muc/{slug?}', [
         'as' => 'danhmuc',
