@@ -127,6 +127,19 @@ $('.lazyload').removeAttr("src");
             });
     })
 
+    $('.i_menu').on('click', function(){
+      var id = $(this).attr("id");
+      id = (id = id.split("_"))[1];
+      $('.menu_'+id).slideToggle('slow');
+      var transform = $(this).css('transform');
+      // $('.nav-ctrl ul li i').css('transform','rotate(0)');
+      if(transform != 'matrix(6.12323e-17, 1, -1, 6.12323e-17, 0, 0)'){
+        $(this).css('transform','rotate(90deg)');
+      }else{
+        $(this).css('transform','rotate(0)');
+      }
+    })
+
    </script>
   </body>
   </html>

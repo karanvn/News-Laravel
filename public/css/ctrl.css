@@ -186,3 +186,171 @@ pointer-events: none;
     color:#fff;
     background:chocolate;
 }
+.menuNew-Ctrl{
+
+}
+.menuNew-Ctrl .logo{
+    width:20%;
+    display:inline-block;
+}
+.menuNew-Ctrl .nav{
+    float:right;
+    width:80%;
+    display:inline-block;
+    color:#fff;
+    text-align:right;
+}
+.menuNew-Ctrl .nav ul{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+.menuNew-Ctrl .nav li{
+    margin: 0 20px;
+    display: inline-block;
+    display: inline-grid;
+}
+.menuNew-Ctrl .nav ul li{
+    
+}
+.menuNew-Ctrl .nav li a{
+    width: max-content;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 37px 0 15px;
+    border-bottom: 3px solid transparent;
+}
+.menuNew-Ctrl .nav li a:hover{
+    color: #07AAA5;
+    background-color: transparent;
+}
+.menuNew-Ctrl .page-scroll{
+    color: #07AAA5;
+    border-bottom: 3px solid #82b440!important;
+    background-color: transparent;
+}
+.nav-ctrl{
+
+}
+.nav-ctrl li{
+    position: relative;
+}
+.nav-ctrl .child-Ctrl{
+    background: #fff;
+    position: fixed;
+    top: 74px;
+    width: 80%;
+    padding: 30px;
+    display: none;
+    transition: 0.3s ease-in;
+    box-shadow: 0 5px 5px #5b5656;
+    overflow: hidden;
+    left: 10%;
+    /* transform: translate(-66%, 0); */
+    background-image: url(https://www.webico.vn/wp-content/uploads/seowp-dropdown-bg.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: bottom right;
+    background-size: auto;
+    animation: shownavul 0.2s linear 1 alternate;
+    transition: 0.5s;
+
+}
+.nav-ctrl .child-Ctrl-blog{
+    position: absolute;
+    padding:30px;
+    top:100%;
+    left:0;
+    line-height: 32px;
+    background:#fff;
+    box-shadow: 0 5px 5px #5b5656;
+    text-transform: none;
+    width:max-content;
+    transform:translate(-50%,0);
+    display:none;
+    animation: shownavulTwo 0.2s linear 1 alternate;
+
+}
+.nav-ctrl .child-Ctrl-blog li{
+    display: table-cell;
+    width: 50%;
+    padding: 10px;
+    font-weight: bold;
+}
+.nav-ctrl .child-Ctrl-blog li li{
+    padding:0;
+    display: block;
+    width:100%;
+    font-weight: initial;
+
+}
+.nav-ctrl .child-Ctrl-blog li ul{
+
+}
+.nav-ctrl .child-Ctrl-blog li ul li{
+
+}
+
+.nav-ctrl ul li{
+    display: inline-table;
+    line-height: 32px;
+    text-transform: uppercase;
+}
+.nav-ctrl i{
+    display: none;
+}
+.nav-ctrl ul ul li{
+    display: inline-table;
+    line-height: 32px;
+    margin-right: 40px;
+    text-transform: none;
+
+}
+.nav-ctrl ul li p{
+    opacity: 0.6;
+    text-transform: none;
+
+}
+.nav-ctrl ul ul ul li{
+    display: block;
+}
+.nav-ctrl ul ul ul{
+    position: relative;
+}
+.d-block{
+    display: block!important;
+}
+.nav-ctrl li:hover .child-Ctrl, .nav-ctrl li:hover .child-Ctrl-blog{
+    display:block;
+}
+.nav-ctrl ul a:hover{
+    color: #07AAA5;
+}
+
+.col-50{
+    width:49%;
+    display: inline-block;
+}
+@keyframes shownavul{
+    0%{
+        top: 90px;
+        opacity:0;
+    }
+    100%{
+        top: 74px;
+        opacity:1;
+    }
+}
+@keyframes shownavulTwo{
+    0%{
+        top: 130%;
+        opacity:0;
+    }
+    100%{
+        top: 100%;
+        opacity:1;
+    }
+}
