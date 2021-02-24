@@ -14,7 +14,7 @@ class AddCompanyPriceTypeWebTypeDemoToFeedbackTable extends Migration
     public function up()
     {
         Schema::table('feedback', function (Blueprint $table) {
-            $table->string('type')->nullable();
+            $table->string('type')->nullable()->change();
             $table->string('company')->nullable();
             $table->string('demo')->nullable();
             $table->string('price')->nullable();
