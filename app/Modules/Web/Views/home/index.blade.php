@@ -481,18 +481,59 @@
   </section>
   @endif
   
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h4 class="modal-title mb-3" id="exampleModalLabel">Liên hệ báo giá</h4>
+		  <p><small>Xin để lại thông tin dưới đây chúng tôi sẽ liên hệ với bạn!</small></p>
+		</div>
+		<form id="priceshowModalFrm" enctype="multipart/form-data">
+			@csrf
+		<div class="modal-body">
+		  <input type="text" class="form-control" placeholder="Họ và tên" autocomplete="off" name="fullname">
+		  <input type="email" class="form-control" placeholder="Email" autocomplete="off" name="email">
+		  <input type="number" class="form-control" placeholder="Số điện thoại" autocomplete="off" name="phone">
+		  <input type="text" class="form-control" placeholder="Tên công ty/ cửa hàng của bạn" autocomplete="off" name="company">
+		  <select class="form-control" name="type_web">
+			<option value="">Loại Website</option>
+			@foreach($blogCategories->where('showHome','A')->where('position','SERVICE') as $menufooter)
+			<option value="{{@$menufooter->title}}">
+			  <i class="fa fa-chevron-right" aria-hidden="true"></i> <a href="/{{@$menufooter->slug}}">{{@$menufooter->title}}</a>
+			</option>
+		@endforeach
+	</select>
+	<input type="text" class="form-control" placeholder="Giao diện website bạn mong muốn (nếu có)" autocomplete="off" name="demo">
+		<p style="margin-top:5px">Ngân sách dự trù
+		<div class="priceshowModal">500.000 đ</div>
+		</p>
+		<input type="range" id="volpriceshowModal" name="price" min="500000" max="50000000" step="500000" value="500000">
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+		  <button type="submit" class="btn btn-primary" id="quotePrice">Gửi</button>
+		</div>
+		</form>
+	  </div>
+	</div>
+  </div>
   <section id="slogan" class="wow fadeIn" data-wow-duration="500ms" data-wow-delay="300ms"> 
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-12">
 		  <h5 class="hidden">hiddens</h5>
-		  <p class="pull-left">Hảy để lại lời nhắn chúng tôi sẽ chủ động liên lạc với bạn sớm nhất!</p>
+		  <p class="pull-left">Liên hệ báo giá!
+			<a data-toggle="modal" data-target="#exampleModal" href="#" style="margin-left:10px">
+			Báo giá
+			</a> </p>
 		</div>
 	  </div>
 	</div>
   </section>
   <!-- Contact Us -->
-  <section class="info-section" id="contact">
+  {{-- <section class="info-section" id="contact">
 	<div class="row">
 	  <div class="col-md-6 block text-center wow fadeInLeftBig" data-wow-duration="500ms" data-wow-delay="300ms" style="padding:50px 5%">
 		<div class="center">
@@ -539,5 +580,5 @@
 		</div>
 	  </div>
 	</div>
-  </section>
+  </section> --}}
 @endsection

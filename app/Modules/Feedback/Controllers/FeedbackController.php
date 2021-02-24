@@ -19,7 +19,6 @@ use Config;
 
 class FeedbackController extends SiteController
 {
-
     public function __construct()
     {
         $this->feedback = new Feedback();
