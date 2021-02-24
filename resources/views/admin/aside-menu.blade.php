@@ -160,13 +160,22 @@
                             </li> --}}
                             <li class="menu-item menu-item-{{ $routeName == 'CustomerFeedback' ? 'active' : '' }}"
                                 aria-haspopup="true">
-                                <a href="{{ route('CustomerFeedback') }}" class="menu-link">
+                                <a href="/admins/customer/feedback?type=CONTACT" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
                                     <span class="menu-text">Danh sách phản hồi</span>
                                 </a>
                             </li>
+                            <li class="menu-item menu-item-{{ $routeName == 'CustomerFeedback' ? 'active' : '' }}"
+                            aria-haspopup="true">
+                            <a href="/admins/customer/feedback?type=PRICE" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Yêu cầu báo giá</span>
+                            </a>
+                        </li>
                             {{-- <li class="menu-item menu-item-{{ $routeName == 'registerReciveInfo' ? 'active' : '' }}" aria-haspopup="true">
                                 <a href="{{ route('registerReciveInfo') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
