@@ -23,11 +23,20 @@ class Feedback extends Model
             $query->where('status', $status);
         return $query;
     }
+    public function scopeType($query, $type)
+    {
+        if(!empty($type))
+            $query->where('type', $type);
+        return $query;
+    }
 
 
     public function get_feedbacks($params = []){
 
-        $slugs = $this->query()->status(@$params['status']);
+        $slugs = $this->query()
+        ->status(@$params['status'])
+        ->type(@$params['type'])
+        ->orderBy('id','DESC');
 
         return !empty($params['limit']) ? $slugs->paginate($params['limit']) : $slugs->get();
 

@@ -572,8 +572,8 @@ class HomeController extends SiteController
     
     public function postContact(Request $request){
         $data = $request->except('_token');
-        // dd($data['contact_email']);
         $this->feedback->fullname = $data['fullname'];
+        $this->feedback->type = 'CONTACT';
         $this->feedback->email    = $data['email'];
         $this->feedback->phone    = $data['phone'];
         $this->feedback->content  = $data['content'];

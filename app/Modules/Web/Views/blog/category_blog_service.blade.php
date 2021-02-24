@@ -89,6 +89,76 @@
      </div>
      @if(count($questions)>0)
 
+<div style="background: aliceblue;">     
+<ul class="timeline">
+
+	<!-- Item 1 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">Tư vấn và thảo luận</span>
+				{{-- <span class="time-wrapper"><span class="time">2013 - present</span></span> --}}
+			</div>
+			<div class="desc">
+                Với tiêu chí "thấu hiểu nhanh, hành động kịp thời", chúng tôi rất hào hứng để có thể cùng doanh nghiệp bạn:
+                <ul>
+                    <li>Xác định loại hình kinh doanh</li>
+                    <li>Xác định khách hàng mục tiêu.</li>
+                    <li>Phân tích thị trường và đối thủ.</li>
+                    <li>Thiết lập mục tiêu quan trọng.</li>
+                    <li>Xác định guideline.</li>
+                </ul>
+            </div>
+		</div>
+	</li>
+  
+	<!-- Item 2 -->
+	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">Phác thảo cấu trúc website</span>
+			</div>
+			<div class="desc">
+                Giai đoạn này sẽ bao gồm:
+                <ul>
+                    <li>Tìm ra cấu trúc URL.</li>
+                    <li>Xác định các thành phần quan trọng</li>
+                    <li>Lên ý tưởng hình ảnh sử dụng.</li>
+                </ul>
+            </div>
+		</div>
+	</li>
+	<!-- Item 3 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">Thảo luận chốt phương án</span>
+			</div>
+			<div class="desc">Đây là giai đoạn thảo luận quan trọng, đưa ra cấu trúc website thống nhất cuối cùng giữa đội ngũ Designer, Developer và khách hàng, đảm bảo đúng insight mong muốn của doanh nghiệp.</div>
+		</div>
+	</li>
+  <!-- Item 2 -->
+	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">Thiết kế khung sườn trang web</span>
+			</div>
+			<div class="desc">Sau khi có brief cụ thể, đội ngũ thiết kế sẽ bắt tay vào làm khung sườn cho trang web (wireframe), sau đó họp cùng khách hàng để xác nhận vị trí content và số lượng content, cũng như thống nhất layout lần cuối cùng.</div>
+		</div>
+	</li>
+    <li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">Triển khai bản mẫu giao diện</span>
+			</div>
+			<div class="desc">Designer tiến hành làm prototype (bản mẫu giao diện), cùng Developer phát triển các hiệu ứng và tính năng mong muốn. Các chức năng này không ảnh hưởng đến cấu trúc. Ở giai đoạn này cấu trúc website đã cố định nhưng khách hàng có quyền thay đổi giao diện website về mặt hình thức.</div>
+		</div>
+	</li>
+
+</ul>
+
+ </div>
+
      <div class="col-12" style="padding:50px 20px;background:#22CB88;" id="cauHoi">
          <div class="row">
              <div class="container text-center">
@@ -161,6 +231,50 @@
      </div>
      @endif
  </div>
+ 
+ 
+ @php
+	   $Pricing = @$generals['PRICING'];
+   @endphp
+  
+@if(!empty($Pricing))
+<section class="section-padding padding" id="pricing" style="background: aliceblue;">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p class="title">Đam mê sự hoàn hảo</p>
+ <h2 class="heading">Bảng giá dịch vụ</h2>
+</div>
+<div class="col-md-12">
+<div class="pricing pricing_tenzin">
+    @php
+        $colorPri = ['pink','active','blue'];
+    @endphp
+    @for ($i = 0; $i<3; $i++)
+    <div class="pricing_item {{@$colorPri[$i]}}">
+      <h3 class="pricing_title">{{@$Pricing['type'][$i]}}</h3>
+      <div class="pricing_price"><span class="pricing_currency">đ</span>{{ Number_format(@$Pricing['price'][$i])}}</div>
+      <p class="pricing_sentence">{{@$Pricing['name'][$i]}}</p>
+      @php $Pricingdis = explode(',', $Pricing['discription'][$i]); @endphp
+      <ul class="pricing_list">
+          @if(count($Pricingdis)>0)
+              @foreach ($Pricingdis as $Pricingdi)
+              <li class="pricing_feature">{{@$Pricingdi}}</li>
+              @endforeach
+          @endif
+      </ul>
+      <a class="pricing_action text-center" href="#contact">Chọn lựa</a>
+  </div>
+    @endfor
+</div>
+</div>
+</div>
+</div>
+            
+</section>
+@endif
+
+
 
 @endsection
 @section('script')

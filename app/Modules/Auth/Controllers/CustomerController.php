@@ -295,10 +295,17 @@ class CustomerController extends SiteController
         $filters = [
             'email'  => @$request->get('email'),
             'id'     => @$request->get('id'),
-            'status' => @$request->get('status')
+            'status' => @$request->get('status'),
+            'type' => @$request->get('type')
         ];
+        if(!empty($request->type)){
+            $feedbacks = $this->feedback->get_feedbacks(['limit' => 30,'type' => $request->type]);
 
-        $feedbacks = $this->feedback->get_feedbacks(['limit' => 12]);
+        }else{
+            $feedbacks = $this->feedback->get_feedbacks(['limit' => 30]);
+
+        }
+
 
         return view('Auth::admin.feedback', [
             'filter'    => get_auth_filters($filters),
