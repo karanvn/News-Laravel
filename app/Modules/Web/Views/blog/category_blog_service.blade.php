@@ -38,6 +38,9 @@
 @endif
 {{-- end section meta --}}
 @section('content')
+<style>
+   
+</style>
 
 @if(count($slideCategorys)>0)
 <div class="banner_service">
@@ -75,7 +78,7 @@
     </div>
   </section>
 @endif
- <div class="container-fuild">
+ <div class="container-fuild cateogry_service">
      <h1 class="text-center" style="padding:15px">{{@$categoryBlogs->title}}</h1>
      <div class="col-12" style="padding:50px 20px">
         <div class="row">
@@ -93,7 +96,7 @@
 <ul class="timeline">
 
 	<!-- Item 1 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Tư vấn và thảo luận</span>
@@ -113,7 +116,7 @@
 	</li>
   
 	<!-- Item 2 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Phác thảo cấu trúc website</span>
@@ -129,7 +132,7 @@
 		</div>
 	</li>
 	<!-- Item 3 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Thảo luận chốt phương án</span>
@@ -138,7 +141,7 @@
 		</div>
 	</li>
   <!-- Item 2 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Thiết kế khung sườn trang web</span>
@@ -146,7 +149,7 @@
 			<div class="desc">Sau khi có brief cụ thể, đội ngũ thiết kế sẽ bắt tay vào làm khung sườn cho trang web (wireframe), sau đó họp cùng khách hàng để xác nhận vị trí content và số lượng content, cũng như thống nhất layout lần cuối cùng.</div>
 		</div>
 	</li>
-    <li>
+    <li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Triển khai bản mẫu giao diện</span>
@@ -162,7 +165,7 @@
      <div class="col-12" style="padding:50px 20px;background:#22CB88;" id="cauHoi">
          <div class="row">
              <div class="container text-center">
-                 <h2 style="color:#fff;margin: auto;width: 589px;max-width: 80vw;">
+                 <h2 style="color:#fff;margin: auto;width: 750px;max-width: 80vw;">
                     Một số câu hỏi thường gặp khi
                     thiết kế web bán hàng</h2>
 
@@ -170,7 +173,7 @@
                        <ul>
                            @foreach ($questions as $key => $question)
                             
-                           <li id="hoi_{{@$question->id}}"><span>{{@$key + 1}}. {{@$question->questions}}</span>
+                           <li id="hoi_{{@$question->id}}"  data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn"><p class="title">{{@$key + 1}}. {{@$question->questions}}</p>
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true"></i>
                                <div class="content">
@@ -190,7 +193,7 @@
      @if(count($blogCategories->where('parent_id',$categoryBlogs->id))>0)
      <div class="col-12 text-center" style="padding:50px 10px">
         <small style="color:#096F47">Bạn đang kinh doanh lỉnh vực nào?</small>
-        <h2 style="color:#096F47;margin: auto;width: 589px;max-width: 88vw;font-weight:bold">
+        <h2 style="color:#096F47;margin: auto;width: 750px;max-width: 88vw;font-weight:bold">
             Ctrl Media mang đến giải pháp dành riêng cho bạn    
         </h2>
         <div class="container">
@@ -199,7 +202,7 @@
             @foreach ($blogCategories->where('parent_id',$categoryBlogs->id) as $blogCategorie)
                 @if($blogCategorie->showHome == 'A')
 
-                <div class="col-md-3 text-center childSerive">
+                <div class="col-md-3 text-center wow fadeIn childSerive"  data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img">
                         <a href="/{{@$blogCategorie->slug}}">
                             <img src="/storage/editor/blog/category/{{(@$blogCategorie->image)}}" alt="">
@@ -212,7 +215,7 @@
                 @foreach ($blogCategories->where('parent_id',$blogCategorie->id) as $blogCategori)
                 @if($blogCategori->showHome == 'A')
 
-                <div class="col-md-3 text-center childSerive">
+                <div class="col-md-3 text-center childSerive  wow fadeIn childSerive"  data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img">
                         <a href="/{{@$blogCategori->slug}}">
                             <img src="/storage/editor/blog/category/{{(@$blogCategori->image)}}" alt="">
@@ -241,7 +244,7 @@
 <section class="section-padding padding" id="pricing" style="background: aliceblue;">
 <div class="container">
 <div class="row">
-<div class="col-md-12 text-center">
+<div class="col-md-12 text-center wow fadeIn"  data-wow-duration="500ms" data-wow-delay="300ms">
 <p class="title">Đam mê sự hoàn hảo</p>
  <h2 class="heading">Bảng giá dịch vụ</h2>
 </div>
@@ -251,7 +254,7 @@
         $colorPri = ['pink','active','blue'];
     @endphp
     @for ($i = 0; $i<3; $i++)
-    <div class="pricing_item {{@$colorPri[$i]}}">
+    <div class="pricing_item {{@$colorPri[$i]}} wow fadeIn"  data-wow-duration="500ms" data-wow-delay="300ms">
       <h3 class="pricing_title">{{@$Pricing['type'][$i]}}</h3>
       <div class="pricing_price"><span class="pricing_currency">đ</span>{{ Number_format(@$Pricing['price'][$i])}}</div>
       <p class="pricing_sentence">{{@$Pricing['name'][$i]}}</p>
@@ -286,12 +289,12 @@
         if($('#hoi_'+id + ' .content').css('display') == 'none'){
             $('#cauHoi li .content').slideUp('200');
             $('#cauHoi li').css('border-width','1px');
-            $('#cauHoi li span').css('font-weight','normal');
+            $('#cauHoi li p').css('font-weight','normal');
             $('#cauHoi li i:nth-child(3)').hide();
             $('#cauHoi li i:nth-child(2)').show();
             $('#hoi_'+id + ' .content').slideDown('200');
             $('#hoi_'+id).css('border-width','0');
-            $('#hoi_'+id + ' span').css('font-weight','bold');
+            $('#hoi_'+id + ' p').css('font-weight','bold');
             $('#hoi_'+id + ' i:nth-child(2)').hide();
             $('#hoi_'+id + ' i:nth-child(3)').show();
         }
@@ -299,7 +302,7 @@
     $('.fa-minus-circle').on('click', function(){
         $('#cauHoi li .content').slideUp('200');
         $('#cauHoi li').css('border-width','1px');
-        $('#cauHoi li span').css('font-weight','normal');
+        $('#cauHoi li p').css('font-weight','normal');
         $('#cauHoi li i:nth-child(3)').hide();
         $('#cauHoi li i:nth-child(2)').show();
     })

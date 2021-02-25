@@ -15,7 +15,7 @@ use App\Modules\Evaluate\Models\Evaluate;
 use App\Modules\Product\Models\Collection;
 use App\Modules\Blog\Models\BlogCategory;
 use App\Modules\Blog\Models\BlogComment;
-use App\Modules\Feedback\Models\FeedBack;
+use App\Modules\Feedback\Models\Feedback;
 use App\Modules\Evaluate\Models\EvaluateImage;
 class AjaxHomeController extends SiteController
 {
@@ -27,7 +27,7 @@ class AjaxHomeController extends SiteController
         $this->blog            = new Blog;
         $this->blogComment     = new BlogComment();
         $this->blogCategory    = new BlogCategory;
-        $this->feedback = new FeedBack();
+        $this->feedback = new Feedback();
 
         
     }

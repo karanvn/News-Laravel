@@ -1,4 +1,23 @@
 @media only screen and (max-width: 768px) {
+    .d-none-ctrl{
+        display: block;
+    }  
+.cateogry_service h1{
+    font-size:34px;
+}
+.cateogry_service h2{
+    font-size: 24px;
+}
+
+.cateogry_service h3{
+    font-size: 24px;
+}
+
+    .childSerive{
+        width:49%;
+        display:inline-table;
+      }
+
     #fixed-collapse-navbar{
         overflow: auto;
         max-height: 100vh;
@@ -27,11 +46,14 @@
         padding: 22px 0;
     }
     .nav-ctrl .child-Ctrl{
-        position: unset;
-    width: auto;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 0 0 transparent;
+    position: fixed;
+    top: 51px;
+    left: 0;
+    width: 100%;
+    z-index: 1111111;
+    height: 100vh;
+    transition:0.3s;
+    padding: 17px;
     background-image: none;
     }
     .nav-ctrl ul li ul{
