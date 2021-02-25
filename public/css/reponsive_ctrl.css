@@ -46,12 +46,20 @@
         padding: 22px 0;
     }
     .nav-ctrl .child-Ctrl{
-        position: unset;
+        /* position: unset;
     width: auto;
     margin: 0;
     padding: 0;
     box-shadow: 0 0 0 transparent;
-    background-image: none;
+    background-image: none; */
+    position: fixed;
+    top: 51px;
+    left: 0;
+    width: 100%;
+    z-index: 1111111;
+    height: 100vh;
+    transition:0.3s;
+    padding: 17px;
     }
     .nav-ctrl ul li ul{
         /* max-height:0;
