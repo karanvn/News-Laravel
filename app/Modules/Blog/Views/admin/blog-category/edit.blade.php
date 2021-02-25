@@ -298,7 +298,8 @@
     </form>
 </div>
 
-
+{{-- <textarea id="product_note">
+</textarea> --}}
 
 
 @endsection
@@ -307,4 +308,8 @@
 <script src="js/pages/image-input.js?v=1.0.0"></script>
 <script src="js/pages/branch.js?v=1.0.0"></script>
 <script src="js/pages/location.js?v=1.0.0"></script>
+{{-- <script src="js/pages/product.js"></script> --}}
+
+
+
 @endsection

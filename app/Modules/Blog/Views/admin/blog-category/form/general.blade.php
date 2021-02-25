@@ -1,7 +1,7 @@
 <link href="admin/assets/plugins/global/plugins.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
 <link href="admin/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
 <link href="admin/assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
-<script src="/js/crud/ckeditor1/ckeditor.js"></script>
+<script src="https://danpianoco.vn/js/crud/ckeditor/ckeditor.js"></script>
 <!--end::Global Theme Styles-->
 <!--begin::Layout Themes(used by all pages)-->
 <link href="admin/assets/css/themes/layout/header/base/dark.css?v=7.0.5" rel="stylesheet" type="text/css" />
@@ -131,7 +131,7 @@
     <div class="form-group row">
         <label
             class="col-form-label">{{trans('Blog::blogcategory.add.form.description') }}</label>
-        <textarea class="form-control ckeditor" name="description">{{ @$category->description }}</textarea>
+        <textarea class="form-control" name="description" id="product_note">{{ @$category->description }}</textarea>
         @if($errors->has('title_shdescriptionort'))
         <p class="text-danger"> {{$errors->first('description')}}</p>
         @endif
