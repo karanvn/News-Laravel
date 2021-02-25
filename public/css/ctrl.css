@@ -798,3 +798,14 @@ line-height: 1.5;
     font-family: encode sans,sans-serif;
     font-size: initial;
 }
+.d-none-ctrl{
+    display: none;
+}
+.d-none-ctrl i{
+   position: initial!important;
+   margin-right: 10px;
+}
+.d-none-ctrl a{
+    display: inline-block!important;
+    margin-left: 10px;
+}

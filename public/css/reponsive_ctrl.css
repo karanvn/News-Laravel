@@ -1,5 +1,7 @@
 @media only screen and (max-width: 768px) {
-    
+    .d-none-ctrl{
+        display: block;
+    }  
 .cateogry_service h1{
     font-size:34px;
 }
