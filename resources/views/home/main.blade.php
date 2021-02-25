@@ -133,6 +133,12 @@
                     <li>
                       <a href=/lien-he.html class="page-scroll">LIÊN HỆ</a>
                     </li>
+                    <li class="d-none-ctrl">
+                      <i class="fa fa-phone" aria-hidden="true"></i>HOTLINE : <a href="tel:0909786000">0909.786.000</a>
+                    </li>
+                    <li class="d-none-ctrl">
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>STORE : <a rel="nofollow" href="https://g.page/evashopping">200 Bàu Cát, P.11, Q.Tân Bình, TPHCM</a>
+                    </li>
                   </ul>
                 </div>
              </nav>
