@@ -96,7 +96,7 @@
 <ul class="timeline">
 
 	<!-- Item 1 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Tư vấn và thảo luận</span>
@@ -116,7 +116,7 @@
 	</li>
   
 	<!-- Item 2 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Phác thảo cấu trúc website</span>
@@ -132,7 +132,7 @@
 		</div>
 	</li>
 	<!-- Item 3 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Thảo luận chốt phương án</span>
@@ -141,7 +141,7 @@
 		</div>
 	</li>
   <!-- Item 2 -->
-	<li>
+	<li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Thiết kế khung sườn trang web</span>
@@ -149,7 +149,7 @@
 			<div class="desc">Sau khi có brief cụ thể, đội ngũ thiết kế sẽ bắt tay vào làm khung sườn cho trang web (wireframe), sau đó họp cùng khách hàng để xác nhận vị trí content và số lượng content, cũng như thống nhất layout lần cuối cùng.</div>
 		</div>
 	</li>
-    <li>
+    <li data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn">
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">Triển khai bản mẫu giao diện</span>
