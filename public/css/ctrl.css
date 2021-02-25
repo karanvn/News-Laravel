@@ -799,7 +799,7 @@ line-height: 1.5;
     font-size: initial;
 }
 .d-none-ctrl{
-    display: none;
+    display: none!important;
 }
 .d-none-ctrl i{
    position: initial!important;
