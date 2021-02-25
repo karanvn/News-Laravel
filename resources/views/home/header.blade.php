@@ -1,19 +1,8 @@
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('template/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/icomoon-fonts.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/animate.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/settings.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/owl.carousel.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/owl.transitions.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/jquery.fancybox.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/zerogrid.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/jPushMenu.css')}}">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:100,200,300,400%7COpen+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{asset('template/css/onepage.css')}}"> --}}
-
-
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('template/css/loader-colorful.css')}}">  --}}
+@if(!empty($slides))
+  @foreach($slides as $slide)
+  <link rel="preload" as="image" href="{{ get_image_banner_webp($slide->avatar)}}" />
+  @endforeach
+@endif
     <link rel="dns-prefetch" href="https://ajax.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
