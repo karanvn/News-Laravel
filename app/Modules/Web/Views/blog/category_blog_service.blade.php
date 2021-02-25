@@ -38,6 +38,9 @@
 @endif
 {{-- end section meta --}}
 @section('content')
+<style>
+   
+</style>
 
 @if(count($slideCategorys)>0)
 <div class="banner_service">
@@ -75,7 +78,7 @@
     </div>
   </section>
 @endif
- <div class="container-fuild">
+ <div class="container-fuild cateogry_service">
      <h1 class="text-center" style="padding:15px">{{@$categoryBlogs->title}}</h1>
      <div class="col-12" style="padding:50px 20px">
         <div class="row">
@@ -170,7 +173,7 @@
                        <ul>
                            @foreach ($questions as $key => $question)
                             
-                           <li id="hoi_{{@$question->id}}"><span>{{@$key + 1}}. {{@$question->questions}}</span>
+                           <li id="hoi_{{@$question->id}}"><p class="title">{{@$key + 1}}. {{@$question->questions}}</p>
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true"></i>
                                <div class="content">
@@ -286,12 +289,12 @@
         if($('#hoi_'+id + ' .content').css('display') == 'none'){
             $('#cauHoi li .content').slideUp('200');
             $('#cauHoi li').css('border-width','1px');
-            $('#cauHoi li span').css('font-weight','normal');
+            $('#cauHoi li p').css('font-weight','normal');
             $('#cauHoi li i:nth-child(3)').hide();
             $('#cauHoi li i:nth-child(2)').show();
             $('#hoi_'+id + ' .content').slideDown('200');
             $('#hoi_'+id).css('border-width','0');
-            $('#hoi_'+id + ' span').css('font-weight','bold');
+            $('#hoi_'+id + ' p').css('font-weight','bold');
             $('#hoi_'+id + ' i:nth-child(2)').hide();
             $('#hoi_'+id + ' i:nth-child(3)').show();
         }
@@ -299,7 +302,7 @@
     $('.fa-minus-circle').on('click', function(){
         $('#cauHoi li .content').slideUp('200');
         $('#cauHoi li').css('border-width','1px');
-        $('#cauHoi li span').css('font-weight','normal');
+        $('#cauHoi li p').css('font-weight','normal');
         $('#cauHoi li i:nth-child(3)').hide();
         $('#cauHoi li i:nth-child(2)').show();
     })
