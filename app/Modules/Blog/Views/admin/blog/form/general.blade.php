@@ -40,7 +40,7 @@
     <div class="form-group row">
         <label class="col-form-label" style="width: 100%">{{ trans('Blog::blog.add.form.content') }}
             <span class="label-text-error">*</span></label>
-            <textarea id="blog_content"  class="ckeditor" name="content" rows="3">{{ isset($blog->content)?$blog->content:old('content') }}</textarea>
+            <textarea   id="product_note" name="content" rows="3">{{ isset($blog->content)?$blog->content:old('content') }}</textarea>
             @if($errors->has('content'))
             <p class="text-danger"> {{$errors->first('content')}}</p>
             @endif
