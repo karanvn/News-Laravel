@@ -165,7 +165,7 @@
      <div class="col-12" style="padding:50px 20px;background:#22CB88;" id="cauHoi">
          <div class="row">
              <div class="container text-center">
-                 <h2 style="color:#fff;margin: auto;width: 589px;max-width: 80vw;">
+                 <h2 style="color:#fff;margin: auto;width: 750px;max-width: 80vw;">
                     Một số câu hỏi thường gặp khi
                     thiết kế web bán hàng</h2>
 
@@ -193,7 +193,7 @@
      @if(count($blogCategories->where('parent_id',$categoryBlogs->id))>0)
      <div class="col-12 text-center" style="padding:50px 10px">
         <small style="color:#096F47">Bạn đang kinh doanh lỉnh vực nào?</small>
-        <h2 style="color:#096F47;margin: auto;width: 659px;max-width: 88vw;font-weight:bold">
+        <h2 style="color:#096F47;margin: auto;width: 750px;max-width: 88vw;font-weight:bold">
             Ctrl Media mang đến giải pháp dành riêng cho bạn    
         </h2>
         <div class="container">
@@ -244,7 +244,7 @@
 <section class="section-padding padding" id="pricing" style="background: aliceblue;">
 <div class="container">
 <div class="row">
-<div class="col-md-12 text-center">
+<div class="col-md-12 text-center wow fadeIn"  data-wow-duration="500ms" data-wow-delay="300ms">
 <p class="title">Đam mê sự hoàn hảo</p>
  <h2 class="heading">Bảng giá dịch vụ</h2>
 </div>
@@ -254,7 +254,7 @@
         $colorPri = ['pink','active','blue'];
     @endphp
     @for ($i = 0; $i<3; $i++)
-    <div class="pricing_item {{@$colorPri[$i]}}">
+    <div class="pricing_item {{@$colorPri[$i]}} wow fadeIn"  data-wow-duration="500ms" data-wow-delay="300ms">
       <h3 class="pricing_title">{{@$Pricing['type'][$i]}}</h3>
       <div class="pricing_price"><span class="pricing_currency">đ</span>{{ Number_format(@$Pricing['price'][$i])}}</div>
       <p class="pricing_sentence">{{@$Pricing['name'][$i]}}</p>
