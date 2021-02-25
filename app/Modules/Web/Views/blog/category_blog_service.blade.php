@@ -173,7 +173,7 @@
                        <ul>
                            @foreach ($questions as $key => $question)
                             
-                           <li id="hoi_{{@$question->id}}"><p class="title">{{@$key + 1}}. {{@$question->questions}}</p>
+                           <li id="hoi_{{@$question->id}}"  data-wow-duration="500ms" data-wow-delay="300ms" class="wow fadeIn"><p class="title">{{@$key + 1}}. {{@$question->questions}}</p>
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true"></i>
                                <div class="content">
@@ -193,7 +193,7 @@
      @if(count($blogCategories->where('parent_id',$categoryBlogs->id))>0)
      <div class="col-12 text-center" style="padding:50px 10px">
         <small style="color:#096F47">Bạn đang kinh doanh lỉnh vực nào?</small>
-        <h2 style="color:#096F47;margin: auto;width: 589px;max-width: 88vw;font-weight:bold">
+        <h2 style="color:#096F47;margin: auto;width: 659px;max-width: 88vw;font-weight:bold">
             Ctrl Media mang đến giải pháp dành riêng cho bạn    
         </h2>
         <div class="container">
@@ -202,7 +202,7 @@
             @foreach ($blogCategories->where('parent_id',$categoryBlogs->id) as $blogCategorie)
                 @if($blogCategorie->showHome == 'A')
 
-                <div class="col-md-3 text-center childSerive">
+                <div class="col-md-3 text-center wow fadeIn childSerive"  data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img">
                         <a href="/{{@$blogCategorie->slug}}">
                             <img src="/storage/editor/blog/category/{{(@$blogCategorie->image)}}" alt="">
@@ -215,7 +215,7 @@
                 @foreach ($blogCategories->where('parent_id',$blogCategorie->id) as $blogCategori)
                 @if($blogCategori->showHome == 'A')
 
-                <div class="col-md-3 text-center childSerive">
+                <div class="col-md-3 text-center childSerive  wow fadeIn childSerive"  data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img">
                         <a href="/{{@$blogCategori->slug}}">
                             <img src="/storage/editor/blog/category/{{(@$blogCategori->image)}}" alt="">
