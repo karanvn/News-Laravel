@@ -56,7 +56,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fixed-collapse-navbar" aria-expanded="true"> 
                 <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> 
                 </button>
-               <a class="navbar-brand"><img src="/Logo/logo.png" alt="logo" class="img-responsive"></a> 
+               <a class="navbar-brand" href="/"><img src="/Logo/logo.png" alt="logo" class="img-responsive"></a> 
              </div>
               
             
