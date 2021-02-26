@@ -27,6 +27,7 @@
 	   $Pricing = @$generals['PRICING'];
    @endphp
 <h1 style="display:none">Ctrl Media</h1>
+
 <section class="text-rotator" id="slide_home">
 	<div class="container">
 	  <div class="row">
